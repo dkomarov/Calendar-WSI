@@ -1,0 +1,147 @@
+body {
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/* Nav bar CSS */
+
+.google-btn{
+  background-color: red;
+  color: white;
+  display: block;
+  float: right;
+}
+
+nav {
+  background-color: white;
+  overflow: hidden;
+  height: 45px;
+  border-bottom: 2px solid #bdc3c7;
+  -webkit-box-shadow: 0 10px 5px -10px #bdc3c7;
+	-moz-box-shadow: 0 10px 5px -10px #bdc3c7;
+  box-shadow:0px 10px 5px -10px #bdc3c7;
+}
+
+nav a{
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover {
+  background-color: black;
+  color: white;
+}
+
+nav a.active{
+  background-color: #4CAF50;
+  color: black;
+}
+
+.logout-btn{
+  float: right;
+}
+
+#view-appointment{
+  background: transparent url(/images/list_icon.png) center left no-repeat;
+  background-size: 20px;
+  padding: 15px;
+}
+
+#logout-icon{
+  background: transparent url(/images/logout_icon.png) center left no-repeat;
+  background-size: 20px;
+  padding: 15px;
+}
+
+#form-icon{
+  background: transparent url(/images/form_icon.png) center left no-repeat;
+  background-size: 20px;
+  padding: 15px;
+}
+
+
+/*Appointment Form CSS*/
+
+#error{
+  color: red;
+  background-color: rgba(207, 0, 15, 0.2);
+  padding: 5px;
+  border-radius: 5px;
+  display: none;
+}
+
+#appointmentForm{
+  text-align: center;
+  display: block;
+}
+
+#form{
+  text-align: left;
+  font-size: 14px;
+}
+input[type=text], input[type=number], input[type=date], input[type=time] {
+  border: 2px solid rgb(46, 49, 49);
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+}
+
+input[type=submit], .btn{
+  background-color: rgb(30, 139, 195);
+  border: none;
+  color: white;
+  padding: 10px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.operation-btns{
+  text-align: center;
+}
+
+/*Appointment List*/
+
+.appointment-list{
+  text-align: center;
+  display: block;
+}
+
+.table-css {
+  border: 1px solid #ccc;
+  width: 80%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table-css tr {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
+
+.table-css th,
+.table-css td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.table-css th {
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.main-logo{
+  text-align: center;
+}
+
+.logo{
+  height: 100%;
+}

@@ -1,2 +1,2 @@
 # project-3-beta
-Beta phase for semester project ITMD 567.
+Beta Phase for semester project 567.

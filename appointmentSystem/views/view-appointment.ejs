@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script rel="javascripts" src="/javascripts/scripts.js"></script>
+
+    <title>Appointment List</title>
+  </head>
+  <body>
+    <nav>
+      <img class="logo view-appointment" src="/images/logo.png" style="float: left;"/>
+        <a href="/appointment"><span id="form-icon"></span>Appointment Form</a>
+        <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
+    </nav>
+    <section class="appointment-list">
+        <h1>Upcoming Events</h1>
+        <section class="appointment-list">
+          <table align="center" class="table-css" id="table-list">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Event Name</th>
+                <th>Event start</th>
+                <th>Event End</th>
+                <th></th>
+              </tr>
+              <%var count = 0%>
+              <% events.forEach(function (eve) { %>
+                <%count++%>
+              <tr>
+                <td><%=count%></td>
+                <td><%= eve.summary%></td>
+                <td><%= eve.start%></td>
+                <td><%= eve.end%></td>
+                <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
+              </tr>
+              <% }) %>
+            </thead>
+          </table>
+        </section>
+    </section>
+  </body>
+</html>
