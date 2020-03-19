@@ -111,7 +111,7 @@ function gCal(functionName) {
           }).then((currentEvent) => {
               if(currentEvent){
                   //User exists
-                  console.log('Event already exists', currentEvent);
+                  console.log('Event already exists: ', event.summary);
               }else{
               const ev = new Event({ // parse event
               _id: mongoose.Types.ObjectId(),
@@ -206,10 +206,8 @@ function gCal(functionName) {
         }
         console.log('Event created: %s', calendarData.summary);
       });
-
     }
-
-}
+  }
 
 module.exports = { insEvent : function insEvent(data){
   calendarData = data;
