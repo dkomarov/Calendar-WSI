@@ -7,6 +7,8 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/auth-routes');
+var menuRoutes = require('./routes/menu');
+
 var appointmentRoutes = require('./routes/appointment-routes');
 const passportSetup = require('./config/passport-setup');
 const cookieSession = require('cookie-session');
@@ -47,8 +49,11 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use('/auth',authRoutes);
+app.use('/menu', menuRoutes);
 app.use('/appointment',appointmentRoutes);
+app.use('/appointment/appt-success', appointmentRoutes);
 app.use('/appointment/view-appointment',appointmentRoutes);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

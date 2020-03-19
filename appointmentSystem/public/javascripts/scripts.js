@@ -1,6 +1,7 @@
 //validates the appointment form before proccessing further
 
 function formValidation(){
+
   var error = document.getElementById('error');
   if(document.getElementById('summary').value == ""){
     document.getElementById('summary').focus();
@@ -73,4 +74,5 @@ function del(eventID,eventSummary){
     success:function(res){
     }});
   }
+
 }

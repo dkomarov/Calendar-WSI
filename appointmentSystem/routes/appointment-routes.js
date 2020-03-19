@@ -5,6 +5,7 @@ const Event = require('../models/event_model');
 var calendarData = {};
 var startDateObj;
 var endDateObj;
+
 const authCheck = (req,res, next) =>{
     if(!req.user){
         // if user is not logged in
@@ -23,6 +24,10 @@ router.get('/view-appointment',authCheck,(req,res)=>{
     getAppointmentList(res,req);
 });
 
+router.get('/appt-success',authCheck,(req,res)=>{
+  res.render('appt-success',{user:req.user});
+});
+
 router.post("/view-appointment",authCheck,(req,res)=>{
   let e = req.body.de;
   async function run(){
@@ -35,7 +40,7 @@ router.post("/view-appointment",authCheck,(req,res)=>{
 
 router.post("/", function(req, res){
     let rb = req.body;
-  
+
     startDateObj = new Date(rb.startTime +" "+ rb.startDate);
     endDateObj = new Date(rb.endTime +" "+ rb.endDate);
   
@@ -58,7 +63,7 @@ router.post("/", function(req, res){
    }
     console.log(calendarData);
     gcalFunction.insEvent(calendarData);
-    res.render('appointment',{user:req.user});  
+    res.render('appt-success',{user:req.user});
   });
   
   function getAppointmentList(res,req){
