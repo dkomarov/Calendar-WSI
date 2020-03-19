@@ -51,7 +51,6 @@ app.use('/users', usersRouter);
 app.use('/auth',authRoutes);
 app.use('/menu', menuRoutes);
 app.use('/appointment',appointmentRoutes);
-app.use('/appointment/appt-success', appointmentRoutes);
 app.use('/appointment/view-appointment',appointmentRoutes);
 
 // catch 404 and forward to error handler

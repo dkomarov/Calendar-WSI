@@ -24,10 +24,6 @@ router.get('/view-appointment',authCheck,(req,res)=>{
     getAppointmentList(res,req);
 });
 
-router.get('/appt-success',authCheck,(req,res)=>{
-  res.render('appt-success',{user:req.user});
-});
-
 router.post("/view-appointment",authCheck,(req,res)=>{
   let e = req.body.de;
   async function run(){
@@ -63,7 +59,7 @@ router.post("/", function(req, res){
    }
     console.log(calendarData);
     gcalFunction.insEvent(calendarData);
-    res.render('appt-success',{user:req.user});
+    res.render('menu',{user:req.user});
   });
   
   function getAppointmentList(res,req){
