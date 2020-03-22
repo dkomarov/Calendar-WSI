@@ -59,9 +59,7 @@ router.post("/", function(req, res){
    }
     console.log(calendarData);
     gcalFunction.insEvent(calendarData);
-    //res.redirect('appointment',{user:req.user});
-    return res.redirect('/menu');
-
+    res.render('menu',{user:req.user});
   });
   
   function getAppointmentList(res,req){
