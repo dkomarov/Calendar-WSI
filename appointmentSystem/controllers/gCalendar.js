@@ -90,7 +90,6 @@ function gCal(functionName) {
      */
     function listEvents(auth) {
       console.log("This is the function name:", functionName);
-      var eventNames = [];
       const calendar = google.calendar({version: 'v3', auth});
       //console.log("calendarList is: " + calendar.calendarList.list);
       calendar.events.list({
@@ -102,7 +101,7 @@ function gCal(functionName) {
       }, (err, res) => {
         if (err) return console.log('The API returned an error: ' + err);
         const events = res.data.items;
-        console.log(events);
+        //console.log(events);
         if (events.length) {
           console.log('Upcoming 10 events:');
           events.map((event, i) => {
