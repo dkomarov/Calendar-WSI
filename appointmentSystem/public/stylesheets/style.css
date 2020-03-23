@@ -156,3 +156,18 @@ input[type=submit], .btn{
   float: left;
   padding: none;
 }
+
+/* Edit pop-up form */
+#edit-pop-up-form {
+  display: none;
+  width: 30%;
+  position: relative;
+  /* POSITIONING
+  left: 40%;
+  top: 40%;
+  transform: translate(-40%, 100%);
+  */
+  text-align: center;
+  background-color: #FFC300;
+
+}

@@ -76,3 +76,7 @@ function del(eventID,eventSummary){
   }
 
 }
+
+function edit(){
+  document.getElementById("edit-pop-up-form").style.display="block";
+}
