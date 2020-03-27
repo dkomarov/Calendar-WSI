@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/auth-routes');
@@ -34,6 +35,8 @@ app.use(cookieSession({
   maxAge:24 * 60 * 60 *1000,
   keys:[keys.session.cookieKey]
 }));
+
+app.use(methodOverride('_method'));
 
 //initialize passport
 app.use(passport.initialize());
