@@ -70,13 +70,17 @@ function del(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
     $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
     data: {de:eventID},
-    type: "POST",
+    type: "DELETE",
     success:function(res){
     }});
   }
-
 }
 
-function edit(){
-  document.getElementById("edit-pop-up-form").style.display="block";
+function edit(event) {
+  console.log("in edit() and passed event: " + event)
+  $.ajax({url: 'http://localhost:3000/appointment/view-appointment/edit', 
+  data: {ue:eventID},
+  type: "PUT",
+  success:function(res){
+  }});
 }
