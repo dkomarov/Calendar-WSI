@@ -29,6 +29,8 @@ function gCal(functionName) {
         authorize(JSON.parse(content), insertEvents);
       }else if(functionName == "listEvents"){
         authorize(JSON.parse(content), listEvents);
+      }else if(functionName == "updateEvent"){
+        authorize(JSON.parse(content), updateEvent);
       }else if(functionName == "deleteEvent"){
         authorize(JSON.parse(content), deleteEvent);
       }
@@ -110,7 +112,7 @@ function gCal(functionName) {
           }).then((currentEvent) => {
               if(currentEvent){
                   //User exists
-                  console.log('Event already exists: ', event.summary);
+                  console.log('Event already exists: ', event.summary + " " + event.id);
               }else{
               const ev = new Event({ // parse event
               _id: mongoose.Types.ObjectId(),
@@ -167,6 +169,32 @@ function gCal(functionName) {
       });
     }
 
+    function updateEvent(auth) {
+      console.log("updateEvent function initiated");
+      var calendarId = 'primary';
+      const calendar = google.calendar({version: 'v3', auth});
+
+      var params = {
+        calendarId: calendarId,
+        eventId: eventID
+      };
+
+
+      calendar.events.patch(params, (res) => {
+        if (res) {
+          return console.log('Updating this event: ' + eventID);
+        } else {
+          Event.updateOne({event_id: eventID}, function(err, obj) {
+            if (err){
+              throw err;
+            }else{
+              console.log("1 document updated: " + eventID);
+            }
+          });
+        }
+      });
+    }
+
     function insertEvents(auth) {
 
       const calendar = google.calendar({ version: 'v3', auth});
@@ -216,6 +244,9 @@ listEvent : function listEvent(id){
   gID = id;
   gCal("listEvents");
   return "done";
+},updateEvent: function updateEvent(uEvent){
+  eventID = uEvent;
+  gCal("updateEvent");
 },deleteEvent: function deleteEvent(dEvent){
   eventID = dEvent;
   gCal("deleteEvent");
