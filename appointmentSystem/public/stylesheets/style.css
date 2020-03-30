@@ -157,17 +157,17 @@ input[type=submit], .btn{
   padding: none;
 }
 
-/* Edit pop-up form */
+/* Edit pop-up form
 #edit-pop-up-form {
   display: none;
   width: 30%;
   position: relative;
-  /* POSITIONING
+   POSITIONING
   left: 40%;
   top: 40%;
   transform: translate(-40%, 100%);
-  */
+  
   text-align: center;
-  background-color: #FFC300;
+  background-color: gold;
 
-}
+} */
