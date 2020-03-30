@@ -18,20 +18,6 @@
         <a href="/appointment"><span id="form-icon"></span>Appointment Form</a>
         <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
     </nav>
-    <div>
-      <form id = "edit-pop-up-form">
-        Summary: <input type="text" id="summary" name="summary">
-        Location:  <input type="text" id="location" name="summary">
-        Description:  <input type="text" id="description" name="description">
-        Start-Date:  <input type="date" id="startDate" name="startDate">
-        End-Date:  <input type="date" id="endDate" name="endDate">
-        Start-Time:  <input type="time" id="startTime" name="startTime">
-        End-Time:  <input type="time" id="endTime" name="endTime">
-        Recurrence:  <input type="number" id="recurrence" name="recurrence">
-        Email:  <input type="text" id="attendees" name="attendees">
-        Reminders:  <input type="text" id="reminders" name="reminders">
-      </form>
-    </div>
     <section class="appointment-list">
         <h1>Upcoming Events</h1>
         <section class="appointment-list">
@@ -51,7 +37,7 @@
                 <td><%= eve.summary%></td>
                 <td><%= eve.start%></td>
                 <td><%= eve.end%></td>
-                <td><button class = "btn" onclick="edit()">Edit</button></td>
+                <td><a href="/appointment/view-appointment/edit/<%= eve.event_id%>"><button class = "btn" onclick="edit('<%= eve.event_id %>')">Edit</button></a></td>
                 <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
               </tr>
               <% }) %>
@@ -59,5 +45,20 @@
           </table>
         </section>
     </section>
+        <!-- <div>
+      <form id = "edit-pop-up-form" method="post" action="/appointment/view-appointment?_method=PUT" onsubmit="return(edit())">
+        Summary: <input type="text" id="summary" name="summary">
+        Location:  <input type="text" id="location" name="summary">
+        Description:  <input type="text" id="description" name="description">
+        Start-Date:  <input type="date" id="startDate" name="startDate">
+        End-Date:  <input type="date" id="endDate" name="endDate">
+        Start-Time:  <input type="time" id="startTime" name="startTime">
+        End-Time:  <input type="time" id="endTime" name="endTime">
+        Recurrence:  <input type="number" id="recurrence" name="recurrence">
+        Email:  <input type="text" id="attendees" name="attendees">
+        Reminders:  <input type="text" id="reminders" name="reminders">
+        <input type="submit" value="Save Changes">
+      </form>
+    </div> -->
   </body>
 </html>
