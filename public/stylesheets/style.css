@@ -63,6 +63,10 @@ nav a.active{
   padding: 15px;
 }
 
+#websystempng {
+  width: 45%;
+  height: 40%;
+}
 
 /*Appointment Form CSS*/
 
@@ -72,6 +76,7 @@ nav a.active{
   padding: 5px;
   border-radius: 5px;
   display: none;
+  margin-bottom: 15px;
 }
 
 #appointmentForm{
