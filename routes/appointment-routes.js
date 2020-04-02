@@ -6,7 +6,7 @@ var calendarData = {};
 var startDateObj;
 var endDateObj;
 
-const authCheck = (req,res, next) =>{
+const authCheck = (req,res,next) =>{
     if(!req.user){
         // if user is not logged in
         res.redirect('/');

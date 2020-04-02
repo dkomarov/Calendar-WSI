@@ -28,7 +28,7 @@ nav a {
   text-align: center;
   text-decoration: none;
   font-size: 17px;
-  padding: 2% 2%;
+  padding: 14px 16px;
 }
 
 nav a#logo-link {
@@ -45,18 +45,13 @@ nav a.active{
   color: black;
 }
 
-span {
-  margin: none;
-  padding: 10%;
-}
-
 .logout-btn{
   float: right;
 }
 
 #view-appointment{
   background: transparent url(/images/list_icon.png) center left no-repeat;
-  background-size: 100%;
+  background-size: 20px;
   padding: 15px;
 }
 
@@ -68,7 +63,13 @@ span {
 
 #form-icon{
   background: transparent url(/images/form_icon.png) center left no-repeat;
-  background-size: 100%;
+  background-size: 20px;
+  padding: 15px;
+}
+
+#create-appointment{
+  background: transparent url(/images/form_icon.png) center left no-repeat;
+  background-size: 20px;
   padding: 15px;
 }
 
