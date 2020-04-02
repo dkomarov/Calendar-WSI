@@ -20,18 +20,18 @@
           <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
       </nav>
       <section id="appointmentForm">
-        <h1>Welcome, <%=user.userName%></h1>
-        <h1>Appointment Form</h1>
-        <form method="post" action="/appointment" onsubmit="return(formValidation())" >
+  
+        <h1>Update Appointment <% event.event_id %></h1>
+        <form method="post" onsubmit="return(formValidation())" action="/appointment/view-appointment/edit/<% event.event_id %>?_method=PUT">
           <table align="center" id="form">
             <tr>
-              <td>Summary:</td><td><input type="text" id="summary" name="summary"></td>
+              <td>Summary:</td><td><input type="text" id="summary" name="summary" value="<%=event.summary %>"></td>
             </tr>
             <tr>
-              <td>Location:</td><td><input type="text" id="location" name="location"></td>
+              <td>Location:</td><td><input type="text" id="location" name="location" value="<%=event.location %>"></td>
             </tr>
             <tr>
-              <td>Description:</td><td><input type="text" id="description" name="description"></td>
+              <td>Description:</td><td><input type="text" id="description" name="description" value="<%=event.description %>"></td>
             </tr>
             <tr>
               <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
@@ -56,9 +56,9 @@
             </tr>
           </table>
           <br>
-          <span id="error"></span>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Update"/>
         </form>
+       
       </section>
   
   </body>

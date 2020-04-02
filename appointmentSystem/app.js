@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var methodOverride = require('method-override');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/auth-routes');
@@ -35,6 +36,8 @@ app.use(cookieSession({
   keys:[keys.session.cookieKey]
 }));
 
+app.use(methodOverride('_method'));
+
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -51,7 +54,6 @@ app.use('/users', usersRouter);
 app.use('/auth',authRoutes);
 app.use('/menu', menuRoutes);
 app.use('/appointment',appointmentRoutes);
-app.use('/appointment/appt-success', appointmentRoutes);
 app.use('/appointment/view-appointment',appointmentRoutes);
 
 // catch 404 and forward to error handler

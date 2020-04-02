@@ -7,13 +7,19 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
+    <script rel="javascripts" src="/javascripts/scripts.js"></script>
+
   <body>
     <nav>
-      <img class="logo view-appointment" src="/images/logo.png" style="float: left;"/>
+      <a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png" alt="appt-logo"></a>
       <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
       <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
     </nav>
-    <br><br><a href="./appointment"><button >Create New Event</button></a><br><br>
+    <h5>Welcome, <%=user.userName%></h5>
+    <br><a href="./appointment"><button >Create New Event</button></a><br>
     <script src="" async defer></script>
+
   </body>
 </html>
