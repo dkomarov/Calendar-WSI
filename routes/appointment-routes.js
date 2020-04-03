@@ -40,8 +40,8 @@ router.put("/view-appointment/update/", authCheck, (req, res)=>{
   run().then(getAppointmentList(res, req));
 })
 
-router.delete("/view-appointment",authCheck,(req,res)=>{
-  console.log("req.body in DELETE is: " +req.body)
+router.post("/view-appointment",authCheck,(req,res)=>{
+  console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
   async function run(){
