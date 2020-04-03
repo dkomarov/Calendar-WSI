@@ -30,7 +30,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
 });
 
 router.put("/view-appointment/update/", authCheck, (req, res)=>{
-  console.log("req.body in UPDATE is: " +req.body)
+  console.log("req.body in UPDATE is: %j" ,req.body)
   let e = req.body.ue;
 
   async function run(){
