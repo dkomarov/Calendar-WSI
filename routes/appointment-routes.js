@@ -24,18 +24,36 @@ router.get('/view-appointment',authCheck,(req,res)=>{
   getAppointmentList(res,req);
 });
 
-router.get('/appt-success',authCheck,(req,res)=>{
-  gcalFunction.listEvent(req.user.googleId);
-  res.render('appt-success',{user:req.user});
+router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
+  console.log('Passed ID: '+req.params.id);
+  getAppointmentInfo(res, req);
 });
 
-router.post("/view-appointment",authCheck,(req,res)=>{
+router.put("/view-appointment/update/", authCheck, (req, res)=>{
+  console.log("req.body in UPDATE is: " +req.body)
+  let e = req.body.ue;
+
+  async function run(){
+    gcalFunction.updateEvent(e);
+    gcalFunction.listEvent(req.user.googleId);
+  }
+  run().then(getAppointmentList(res, req));
+})
+
+router.delete("/view-appointment",authCheck,(req,res)=>{
+  console.log("req.body in DELETE is: " +req.body)
   let e = req.body.de;
+
   async function run(){
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user.googleId);
   }
   run().then(getAppointmentList(res,req));
+});
+
+router.get('/appt-success',authCheck,(req,res)=>{
+  gcalFunction.listEvent(req.user.googleId);
+  res.render('appt-success',{user:req.user});
 });
 
 router.post("/", function(req, res){
@@ -72,6 +90,24 @@ router.post("/", function(req, res){
         throw err;
       }else{
         res.render('view-appointment', { "events": events})
+      }
+    });
+  }
+
+  function getAppointmentInfo(res, req){
+    console.log("Request params is: "+req.params.id);
+    Event.find({userID: req.user.googleId}).exec(async function(err) {
+      if(err){
+        console.log("Unable to find user.");
+      } else {
+        Event.find({event_id: req.params.id}).exec(async function(err, event) {
+          if(err){
+            console.log("Unable to find event id.");
+          } else {
+            console.log("Event id found: "+event);
+            res.render('update', {"event": event})
+          }
+        })
       }
     });
   }

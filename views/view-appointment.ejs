@@ -20,7 +20,7 @@
     <section class="appointment-list">
       <h1>Upcoming Events</h1>
       <section class="appointment-list">
-        <table align="center" class="table-css" id="table-list">
+        <table class="table-css">
           <thead>
             <tr>
               <th>#</th>
@@ -36,7 +36,7 @@
               <td><%= eve.summary%></td>
               <td><%= eve.start%></td>
               <td><%= eve.end%></td>
-              <td><a href="/appointment/view-appointment/edit/<%= eve.event_id%>"><button class="btn" onclick="edit('<%= eve.event_id %>')">Edit</button></a></td>
+              <td><a href="/appointment/view-appointment/update/<%= eve.event_id%>"><button class="btn" onclick="update('<%= eve.event_id %>')">Edit</button></a></td>
               <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
             </tr>
             <% }) %>

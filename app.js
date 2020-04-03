@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/auth-routes');
 var menuRoutes = require('./routes/menu');
+var methodOverride = require('method-override');
 const passportSetup = require('./config/passport-setup');
 var appointmentRoutes = require('./routes/appointment-routes');
 const cookieSession = require('cookie-session');
@@ -26,6 +27,8 @@ app.use(cookieSession({
   maxAge:24 * 60 * 60 *1000,
   keys:[keys.session.cookieKey]
 }));
+
+app.use(methodOverride('_method'));
 
 //initialize passport
 app.use(passport.initialize());
