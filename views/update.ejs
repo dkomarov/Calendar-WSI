@@ -19,17 +19,20 @@
         <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
       </nav>
       <section id="appointmentForm">
-        <h1>Update Appointment <% event.event_id %></h1>
-        <form method="post" action="/appointment/view-appointment/update/<% event.event_id %>?_method=PUT" onsubmit="return formValidation()">
+        <%var count = 0%>
+            <% event.forEach(function (eve) { %>
+              <%count++%>
+        <h1>Update Appointment <%= eve.summary %></h1>
+        <form method="post" action="/appointment/view-appointment/update/<%= eve.event_id %>?_method=PUT" onsubmit="return formValidation()">
           <table id="form">
             <tr>
-              <td>Summary:</td><td><input type="text" id="summary" name="summary" value="<%=event.summary %>"></td>
+              <td>Summary:</td><td><input type="text" id="summary" name="summary" value="<%=eve.summary %>"></td>
             </tr>
             <tr>
-              <td>Location:</td><td><input type="text" id="location" name="location" value="<%=event.location %>"></td>
+              <td>Location:</td><td><input type="text" id="location" name="location" value="<%=eve.location %>"></td>
             </tr>
             <tr>
-              <td>Description:</td><td><input type="text" id="description" name="description" value="<%=event.description %>"></td>
+              <td>Description:</td><td><input type="text" id="description" name="description" value="<%=eve.description %>"></td>
             </tr>
             <tr>
               <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
@@ -53,6 +56,7 @@
               <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
             </tr>
           </table>
+          <% }) %>
           <br>
           <input type="submit" value="Update"/>
         </form>
