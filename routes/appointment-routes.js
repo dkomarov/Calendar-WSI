@@ -29,7 +29,8 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-router.put("/view-appointment/update/", authCheck, (req, res)=>{
+router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
+  console.log('Passed ID Again: '+req.params.id);
   console.log("req.body in UPDATE is: %j" ,req.body)
   let e = req.body.ue;
 

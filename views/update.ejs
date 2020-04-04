@@ -56,9 +56,9 @@
               <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
             </tr>
           </table>
-          <% }) %>
           <br>
-          <input type="submit" value="Update"/>
+          <input type="submit" onclick="update('<%= eve.event_id %>')" value="Update"/>
         </form>
+        <% }) %>
       </section>
   </body>

@@ -80,9 +80,9 @@ function del(eventID,eventSummary){
   }
 }
 
-function update(event) {
-  console.log("in edit() and passed event: " + event)
-  $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update', 
+function update(eventID) {
+  console.log("in edit() and passed eventID: " + eventID)
+  $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID, 
     data: {ue:eventID},
     type: "PUT",
     success:function(res){
