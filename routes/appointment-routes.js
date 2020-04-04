@@ -32,39 +32,46 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
 });
 
 router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
-  //console.log('Passed ID Again: '+req.params.id);
-  //let newData = req.body;
-  //var id = req.params.id;
-  console.log("req.body in UPDATE is: %j" ,req.body)
+  //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
 
-  startDateObj = new Date(rb.startTime +" "+ rb.startDate);
-  endDateObj = new Date(rb.endTime +" "+ rb.endDate);
+  // console.log("rb.startDate is: " + rb.startDate)
+  // console.log("rb.startTime is: " + rb.startTime)
+
+  startDateObj = new Date(rb.startTime + " " + rb.startDate) //.toISOString();
+  endDateObj = new Date(rb.endTime+ " " + rb.endDate) //.toISOString();
 
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
+
+    //  console.log(Date(startDateObj.getTimezoneOffset()));
+    // console.log(Date(endDateObj.getTimezoneOffset()));
+  
 
   newData = {
     'eventID': rb.eventID,
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
-    'start': startDateObj,
-    'end': endDateObj,
-    'recurrence': rb.recurrence,
+    'start': {
+      'dateTime': startDateObj
+      //, 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
+    },
+    'end': {
+      'dateTime': endDateObj
+      //, 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
+    },
     'attendees': rb.attendees,
     'reminders': rb.reminders
  }
 
  console.log("inside put route, newData is: %j", newData)
 
- gcalFunction.updateEvent(newData);
-
-  // async function run(){
-  //   gcalFunction.updateEvent(newData);
-  //   gcalFunction.listEvent(req.user.googleId);
-  // }
-  // run().then(getAppointmentList(res, req));
+  async function run(){
+    gcalFunction.updateEvent(newData);
+    gcalFunction.listEvent(req.user.googleId);
+  }
+  run().then(getAppointmentList(res, req));
 })
 
 router.post("/view-appointment",authCheck,(req,res)=>{
