@@ -1,7 +1,9 @@
 //validates the appointment form before proccessing further
 
-var submit = document.querySelector('input[value="Submit"]');
-submit.addEventListener("click", formValidation());
+window.onload=function() {
+  var submit = document.querySelector('input[type="submit"]');
+  submit.addEventListener("click", formValidation);
+}
 
 function formValidation(){
 
@@ -81,7 +83,6 @@ function del(eventID,eventSummary){
 }
 
 function update(eventID) {
-  console.log("in edit() and passed eventID: " + eventID)
   $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID, 
     data: {ue:eventID},
     type: "PUT",

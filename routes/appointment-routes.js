@@ -32,10 +32,11 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
 router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
   console.log('Passed ID Again: '+req.params.id);
   console.log("req.body in UPDATE is: %j" ,req.body)
-  let e = req.body.ue;
+  var newData = req.body;
+  var id = req.params.id;
 
   async function run(){
-    gcalFunction.updateEvent(e);
+    gcalFunction.updateEvent(id, newData);
     gcalFunction.listEvent(req.user.googleId);
   }
   run().then(getAppointmentList(res, req));
