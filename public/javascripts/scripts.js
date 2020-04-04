@@ -82,10 +82,10 @@ function del(eventID,eventSummary){
   }
 }
 
-function update(eventID) {
-  $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID, 
-    data: {ue:eventID},
-    type: "PUT",
-    success:function(res){
-  }});
-}
+// function update(eventID) {
+//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID+"?_method=PUT", 
+//     data: {ue:eventID},
+//     type: "PUT",
+//     success:function(res){
+//   }});
+// }

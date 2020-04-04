@@ -5,6 +5,8 @@ const Event = require('../models/event_model');
 var calendarData = {};
 var startDateObj;
 var endDateObj;
+var newData = {};
+
 
 const authCheck = (req,res,next) =>{
     if(!req.user){
@@ -30,16 +32,39 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
 });
 
 router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
-  console.log('Passed ID Again: '+req.params.id);
+  //console.log('Passed ID Again: '+req.params.id);
+  //let newData = req.body;
+  //var id = req.params.id;
   console.log("req.body in UPDATE is: %j" ,req.body)
-  var newData = req.body;
-  var id = req.params.id;
+  let rb = req.body;
 
-  async function run(){
-    gcalFunction.updateEvent(id, newData);
-    gcalFunction.listEvent(req.user.googleId);
-  }
-  run().then(getAppointmentList(res, req));
+  startDateObj = new Date(rb.startTime +" "+ rb.startDate);
+  endDateObj = new Date(rb.endTime +" "+ rb.endDate);
+
+  console.log("startDateObj is: " + startDateObj);
+  console.log("endDateObj is: " + endDateObj);
+
+  newData = {
+    'eventID': rb.eventID,
+    'summary': rb.summary,
+    'location': rb.location,
+    'description': rb.description,
+    'start': startDateObj,
+    'end': endDateObj,
+    'recurrence': rb.recurrence,
+    'attendees': rb.attendees,
+    'reminders': rb.reminders
+ }
+
+ console.log("inside put route, newData is: %j", newData)
+
+ gcalFunction.updateEvent(newData);
+
+  // async function run(){
+  //   gcalFunction.updateEvent(newData);
+  //   gcalFunction.listEvent(req.user.googleId);
+  // }
+  // run().then(getAppointmentList(res, req));
 })
 
 router.post("/view-appointment",authCheck,(req,res)=>{
