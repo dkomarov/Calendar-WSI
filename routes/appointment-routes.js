@@ -31,7 +31,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
+router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
   //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
 
@@ -53,14 +53,8 @@ router.put("/view-appointment/update/:id", authCheck, (req, res)=>{
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
-    'start': {
-      'dateTime': startDateObj
-      //, 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
-    },
-    'end': {
-      'dateTime': endDateObj
-      //, 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone
-    },
+    'start' : startDateObj,
+    'end' : endDateObj,
     'attendees': rb.attendees,
     'reminders': rb.reminders
  }
