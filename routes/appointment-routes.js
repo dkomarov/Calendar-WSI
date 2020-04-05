@@ -128,7 +128,7 @@ router.post("/", function(req, res){
       if(err){
         console.log("Unable to find user.");
       } else {
-        Event.find({event_id: req.params.id}).exec(async function(err, event) {
+        Event.find({_id: req.params.id}).exec(async function(err, event) {
           if(err){
             console.log("Unable to find event id.");
           } else {

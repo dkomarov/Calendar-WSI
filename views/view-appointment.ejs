@@ -36,7 +36,7 @@
               <td><%= eve.summary%></td>
               <td><%= eve.start%></td>
               <td><%= eve.end%></td>
-              <td><a href="/appointment/view-appointment/update/<%= eve.event_id%>"><button class="btn">Edit</button></a></td>
+              <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><button class="btn">Edit</button></a></td>
               <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
             </tr>
             <% }) %>
