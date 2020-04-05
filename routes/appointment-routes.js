@@ -31,7 +31,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
+router.post("/view-appointment/update/", authCheck, (req, res)=>{
   //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
 
