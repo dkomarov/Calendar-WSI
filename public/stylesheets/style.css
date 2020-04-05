@@ -169,7 +169,7 @@ input[type=submit], .btn{
   padding: none;
 }
 
-#eventID {
+#eventID, #mongoID {
   display: none;
 }
 /* Edit pop-up form

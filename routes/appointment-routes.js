@@ -31,7 +31,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-router.post("/view-appointment/update/", authCheck, (req, res)=>{
+router.post("/view-appointment", authCheck, (req, res)=>{
   //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
 
@@ -49,6 +49,7 @@ router.post("/view-appointment/update/", authCheck, (req, res)=>{
   
 
   newData = {
+    'mongoID': rb.mongoID,
     'eventID': rb.eventID,
     'summary': rb.summary,
     'location': rb.location,
@@ -68,7 +69,7 @@ router.post("/view-appointment/update/", authCheck, (req, res)=>{
   run().then(getAppointmentList(res, req));
 })
 
-router.post("/view-appointment",authCheck,(req,res)=>{
+router.delete("/view-appointment",authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
