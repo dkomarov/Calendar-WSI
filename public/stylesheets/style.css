@@ -3,6 +3,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Nav bar CSS */
 
 .google-btn{
@@ -22,13 +27,17 @@ nav {
   box-shadow:0px 10px 5px -10px #bdc3c7;
 }
 
-nav a{
+nav a {
   float: left;
   color: black;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  padding: 14px 16px;
+}
+
+nav a#logo-link {
+  padding: 0%;
 }
 
 nav a:hover {
@@ -63,6 +72,16 @@ nav a.active{
   padding: 15px;
 }
 
+#create-appointment{
+  background: transparent url(/images/form_icon.png) center left no-repeat;
+  background-size: 20px;
+  padding: 15px;
+}
+
+#websystempng {
+  width: 45%;
+  height: 40%;
+}
 
 /*Appointment Form CSS*/
 
@@ -72,6 +91,7 @@ nav a.active{
   padding: 5px;
   border-radius: 5px;
   display: none;
+  margin-bottom: 15px;
 }
 
 #appointmentForm{
@@ -83,6 +103,7 @@ nav a.active{
   text-align: left;
   font-size: 14px;
 }
+
 input[type=text], input[type=number], input[type=date], input[type=time] {
   border: 2px solid rgb(46, 49, 49);
   border-radius: 4px;
@@ -144,4 +165,24 @@ input[type=submit], .btn{
 
 .logo{
   height: 100%;
+  float: left;
+  padding: none;
 }
+
+#eventID, #mongoID {
+  display: none;
+}
+/* Edit pop-up form
+#edit-pop-up-form {
+  display: none;
+  width: 30%;
+  position: relative;
+   POSITIONING
+  left: 40%;
+  top: 40%;
+  transform: translate(-40%, 100%);
+  
+  text-align: center;
+  background-color: gold;
+
+} */
