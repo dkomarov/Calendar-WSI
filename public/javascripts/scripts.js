@@ -79,17 +79,16 @@ function del(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
     $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
     data: {de:eventID},
-    type: "POST",
+    type: "DELETE",
     success:function(res){
     }});
   }
 }
 
-function update(event) {
-  console.log("in edit() and passed event: " + event)
-  $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update', 
-    data: {ue:eventID},
-    type: "PUT",
-    success:function(res){
-  }});
-}
+// function update(eventID) {
+//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID+"?_method=PUT", 
+//     data: {ue:eventID},
+//     type: "PUT",
+//     success:function(res){
+//   }});
+// }

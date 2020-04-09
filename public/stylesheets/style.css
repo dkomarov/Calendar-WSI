@@ -169,6 +169,9 @@ input[type=button], .btn{
   padding: none;
 }
 
+#eventID, #mongoID {
+  display: none;
+}
 /* Edit pop-up form
 #edit-pop-up-form {
   display: none;

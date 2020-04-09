@@ -5,6 +5,8 @@ const Event = require('../models/event_model');
 var calendarData = {};
 var startDateObj;
 var endDateObj;
+var newData = {};
+
 
 const authCheck = (req,res,next) =>{
     if(!req.user){
@@ -29,19 +31,46 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-router.put("/view-appointment/update/", authCheck, (req, res)=>{
-  console.log("req.body in UPDATE is: " +req.body)
-  let e = req.body.ue;
+router.post("/view-appointment", authCheck, (req, res)=>{
+  //console.log("req.body in UPDATE is: %j" ,req.body)
+  let rb = req.body;
+
+  // console.log("rb.startDate is: " + rb.startDate)
+  // console.log("rb.startTime is: " + rb.startTime)
+
+  startDateObj = new Date(rb.startTime + " " + rb.startDate) //.toISOString();
+  endDateObj = new Date(rb.endTime+ " " + rb.endDate) //.toISOString();
+
+  console.log("startDateObj is: " + startDateObj);
+  console.log("endDateObj is: " + endDateObj);
+
+    //  console.log(Date(startDateObj.getTimezoneOffset()));
+    // console.log(Date(endDateObj.getTimezoneOffset()));
+  
+
+  newData = {
+    'mongoID': rb.mongoID,
+    'eventID': rb.eventID,
+    'summary': rb.summary,
+    'location': rb.location,
+    'description': rb.description,
+    'start' : startDateObj,
+    'end' : endDateObj,
+    'attendees': rb.attendees,
+    'reminders': rb.reminders
+ }
+
+ console.log("inside put route, newData is: %j", newData)
 
   async function run(){
-    gcalFunction.updateEvent(e);
+    gcalFunction.updateEvent(newData);
     gcalFunction.listEvent(req.user.googleId);
   }
   run().then(getAppointmentList(res, req));
 })
 
 router.delete("/view-appointment",authCheck,(req,res)=>{
-  console.log("req.body in DELETE is: " +req.body)
+  console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
   async function run(){
@@ -100,7 +129,7 @@ router.post("/", function(req, res){
       if(err){
         console.log("Unable to find user.");
       } else {
-        Event.find({event_id: req.params.id}).exec(async function(err, event) {
+        Event.find({_id: req.params.id}).exec(async function(err, event) {
           if(err){
             console.log("Unable to find event id.");
           } else {
