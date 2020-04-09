@@ -21,6 +21,28 @@ router.get('/',authCheck,(req,res)=>{
   res.render('appointment',{user:req.user});
 });
 
+router.post('/appt-success',authCheck,(req,res)=>{
+  //console.log("REQ.BODY in appt-success is: %j", req.body)
+
+  let rb = req.body;
+
+  startDateObj = new Date(rb.startTime + " " + rb.startDate) //.toISOString();
+  endDateObj = new Date(rb.endTime+ " " + rb.endDate) //.toISOString();
+
+  eventInfo = {
+    'summary': rb.summary,
+    'location': rb.location,
+    'description': rb.description,
+    'start' : startDateObj,
+    'end' : endDateObj,
+    'attendees': rb.attendees,
+    'reminders': rb.reminders
+ }
+
+  gcalFunction.listEvent(req.user.googleId);
+  res.render('appt-success',{user:req.user, event:eventInfo});
+});
+
 router.get('/view-appointment',authCheck,(req,res)=>{
   gcalFunction.listEvent(req.user.googleId);
   getAppointmentList(res,req);
@@ -78,11 +100,6 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
     gcalFunction.listEvent(req.user.googleId);
   }
   run().then(getAppointmentList(res,req));
-});
-
-router.get('/appt-success',authCheck,(req,res)=>{
-  gcalFunction.listEvent(req.user.googleId);
-  res.render('appt-success',{user:req.user});
 });
 
 router.post("/", function(req, res){
