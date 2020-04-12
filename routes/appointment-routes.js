@@ -18,7 +18,7 @@ const authCheck = (req,res,next) =>{
 };
 
 router.get('/',authCheck,(req,res)=>{  
-  res.render('appointment',{user:req.user});
+  res.render('appointment',{user:req.user, success: ''});
 });
 
 router.get('/view-appointment',authCheck,(req,res)=>{
@@ -80,10 +80,10 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
   run().then(getAppointmentList(res,req));
 });
 
-router.get('/appt-success',authCheck,(req,res)=>{
-  gcalFunction.listEvent(req.user.googleId);
-  res.render('appt-success',{user:req.user});
-});
+// router.get('/appt-success',authCheck,(req,res)=>{
+//   gcalFunction.listEvent(req.user.googleId);
+//   res.render('appt-success',{user:req.user});
+// });
 
 router.post("/", function(req, res){
     let rb = req.body;
@@ -110,7 +110,7 @@ router.post("/", function(req, res){
    }
     console.log(calendarData);
     gcalFunction.insEvent(calendarData);
-    res.render('appt-success',{user:req.user});
+    res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
   });
   
   function getAppointmentList(res,req){
