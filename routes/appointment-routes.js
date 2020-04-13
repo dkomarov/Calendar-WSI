@@ -2,10 +2,10 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const gcalFunction = require('../lib/gcalendar');
 const Event = require('../models/event_model');
-var calendarData = {};
+var calendarData;
 var startDateObj;
 var endDateObj;
-var newData = {};
+var newData;
 
 
 const authCheck = (req,res,next) =>{
@@ -29,18 +29,22 @@ router.post('/appt-success',authCheck,(req,res)=>{
   startDateObj = new Date(rb.startTime + " " + rb.startDate) //.toISOString();
   endDateObj = new Date(rb.endTime+ " " + rb.endDate) //.toISOString();
 
-  eventInfo = {
+  calendarData = {
+    _id: mongoose.Types.ObjectId(),
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
-    'start' : startDateObj,
-    'end' : endDateObj,
+    'start': startDateObj,
+    'end': endDateObj,
+    'recurrence': rb.recurrence,
     'attendees': rb.attendees,
     'reminders': rb.reminders
- }
+  }
 
+  //console.log("calendarData is: ", calendarData);
+  gcalFunction.insEvent(calendarData);
   gcalFunction.listEvent(req.user.googleId);
-  res.render('appt-success',{user:req.user, event:eventInfo});
+  res.render('appt-success',{user:req.user, event:calendarData});
 });
 
 router.get('/view-appointment',authCheck,(req,res)=>{
@@ -66,10 +70,9 @@ router.post("/view-appointment", authCheck, (req, res)=>{
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
 
-    //  console.log(Date(startDateObj.getTimezoneOffset()));
-    // console.log(Date(endDateObj.getTimezoneOffset()));
+  // console.log(Date(startDateObj.getTimezoneOffset()));
+  // console.log(Date(endDateObj.getTimezoneOffset()));
   
-
   newData = {
     'mongoID': rb.mongoID,
     'eventID': rb.eventID,
@@ -82,52 +85,24 @@ router.post("/view-appointment", authCheck, (req, res)=>{
     'reminders': rb.reminders
  }
 
- console.log("inside put route, newData is: %j", newData)
+  //console.log("inside post route, newData is: %j", newData)
 
-  async function run(){
-    gcalFunction.updateEvent(newData);
-    gcalFunction.listEvent(req.user.googleId);
-  }
-  run().then(getAppointmentList(res, req));
-})
+    async function run(){
+      gcalFunction.updateEvent(newData);
+      gcalFunction.listEvent(req.user.googleId);
+    }
+    run().then(getAppointmentList(res, req));
+  })
 
-router.delete("/view-appointment",authCheck,(req,res)=>{
-  console.log("req.body in DELETE is: %j" ,req.body)
-  let e = req.body.de;
+  router.delete("/view-appointment",authCheck,(req,res)=>{
+    console.log("req.body in DELETE is: %j" ,req.body)
+    let e = req.body.de;
 
-  async function run(){
-    gcalFunction.deleteEvent(e);
-    gcalFunction.listEvent(req.user.googleId);
-  }
-  run().then(getAppointmentList(res,req));
-});
-
-router.post("/", function(req, res){
-    let rb = req.body;
-
-    startDateObj = new Date(rb.startTime +" "+ rb.startDate);
-    endDateObj = new Date(rb.endTime +" "+ rb.endDate);
-  
-    // console.log(Date(startDateObj.getTimezoneOffset()));
-    // console.log(Date(endDateObj.getTimezoneOffset()));
-  
-    console.log("startDateObj is: " + startDateObj);
-    console.log("endDateObj is: " + endDateObj);
-
-   calendarData = {
-      _id: mongoose.Types.ObjectId(),
-      'summary': rb.summary,
-      'location': rb.location,
-      'description': rb.description,
-      'start': startDateObj,
-      'end': endDateObj,
-      'recurrence': rb.recurrence,
-      'attendees': rb.attendees,
-      'reminders': rb.reminders
-   }
-    console.log(calendarData);
-    gcalFunction.insEvent(calendarData);
-    res.render('appt-success',{user:req.user});
+    async function run(){
+      gcalFunction.deleteEvent(e);
+      gcalFunction.listEvent(req.user.googleId);
+    }
+    run().then(getAppointmentList(res,req));
   });
   
   function getAppointmentList(res,req){
