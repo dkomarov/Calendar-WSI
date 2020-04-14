@@ -78,6 +78,7 @@ function del(eventID,eventSummary){
     data: {de:eventID},
     type: "DELETE",
     success:function(res){
+      window.location.href = "/appointment/view-appointment";
     }});
   }
 }

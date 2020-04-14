@@ -8,7 +8,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-    <script rel="javascripts" src="/javascripts/scripts.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
     <title>Appointment Form</title>
   </head>
@@ -18,10 +17,15 @@
         <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
         <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
       </nav>
+      <% if(success != ''){%>
+      <section class="alert">
+        <strong><%= success%></strong>
+      </section>
+      <%}%>
       <section id="appointmentForm">
         <h1>Welcome, <%=user.userName%></h1>
         <h1>Appointment Form</h1>
-        <form method="post" action="/appointment/appt-success" onsubmit="return formValidation()">
+        <form method="post" action="/appointment" onsubmit="return formValidation()">
           <table id="form">
             <tr>
               <td>Summary:</td><td><input type="text" id="summary" name="summary"></td>
@@ -59,4 +63,6 @@
           <input type="submit" value="Submit" />
         </form>
       </section>
+      <script rel="javascripts" src="/javascripts/scripts.js"></script>
   </body>
+  </html>

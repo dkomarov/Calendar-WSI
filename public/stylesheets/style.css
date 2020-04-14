@@ -172,6 +172,39 @@ input[type=submit], .btn{
 #eventID, #mongoID {
   display: none;
 }
+
+.alert {
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+  background-color: #21bf73; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  -webkit-animation: seconds 1.0s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 1s;
+  animation: seconds 1.0s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 1s;
+}
+
+
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;  
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 /* Edit pop-up form
 #edit-pop-up-form {
   display: none;
