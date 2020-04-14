@@ -1,53 +1,57 @@
+<title>Appointment Form</title>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
-    <script rel="javascripts" src="/javascripts/scripts.js"></script>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <title>Appointment Form</title>
-      <nav>
-        <a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png" alt="appt-logo"></a>
-        <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
-        <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
-      </nav>
-      <section id="appointmentForm">
-        <h1>Welcome, <%=user.userName%></h1>
-        <h1>Appointment Form</h1>
-        <form method="post" action="/appointment/appt-success" onsubmit="return formValidation()">
-          <table id="form">
-            <tr>
-              <td>Summary:</td><td><input type="text" id="summary" name="summary"></td>
-            </tr>
-            <tr>
-              <td>Location:</td><td><input type="text" id="location" name="location"></td>
-            </tr>
-            <tr>
-              <td>Description:</td><td><input type="text" id="description" name="description"></td>
-            </tr>
-            <tr>
-              <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
-            </tr>
-            <tr>
-              <td>End Date:</td><td><input type="date" id="endDate" name="endDate"></td>
-            </tr>
-            <tr>
-              <td>Start Time:</td><td><input type="time" id="startTime" name="startTime"></td>
-            </tr>
-            <tr>
-              <td>End Time</td><td><input type="time" id="endTime" name="endTime"></td>
-            </tr>
-            <tr>
-              <td>Recurrence: (#)</td><td><input type="number" id="recurrence" name="recurrence"></td>
-            </tr>
-            <tr>
-              <td>Attendee Email(s):</td><td><input type="text" id="attendees" name="attendees"></td>
-            </tr>
-            <tr>
-              <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
-            </tr>
-          </table>
-          <br>
-          <span id="error"></span>
-          <input type="submit" value="Submit" />
-        </form>
-      </section>
+<meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
+
+<nav>
+  <a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png" alt="appt-logo"></a>
+  <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
+  <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
+</nav>
+
+<section id="appointmentForm">
+
+  <h1>Welcome, <%=user.userName%></h1>
+  <h1>Appointment Form</h1>
+
+  <form method="post" action="/appointment/appt-success" onsubmit="return formValidation()">
+    <table id="form">
+      <tr>
+        <td>Summary:</td><td><input type="text" id="summary" name="summary"></td>
+      </tr>
+      <tr>
+        <td>Location:</td><td><input type="text" id="location" name="location"></td>
+      </tr>
+      <tr>
+        <td>Description:</td><td><input type="text" id="description" name="description"></td>
+      </tr>
+      <tr>
+        <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
+      </tr>
+      <tr>
+        <td>End Date:</td><td><input type="date" id="endDate" name="endDate"></td>
+      </tr>
+      <tr>
+        <td>Start Time:</td><td><input type="time" id="startTime" name="startTime"></td>
+      </tr>
+      <tr>
+        <td>End Time</td><td><input type="time" id="endTime" name="endTime"></td>
+      </tr>
+      <tr>
+        <td>Recurrence: (#)</td><td><input type="number" id="recurrence" name="recurrence"></td>
+      </tr>
+      <tr>
+        <td>Attendee Email(s):</td><td><input type="text" id="attendees" name="attendees"></td>
+      </tr>
+      <tr>
+        <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
+      </tr>
+    </table>
+    <br>
+
+    <span id="error"></span>
+    <input type="submit" value="Submit" />
+    
+  </form>
+</section>
+
+<script rel="javascripts" src="/javascripts/scripts.js"></script>
