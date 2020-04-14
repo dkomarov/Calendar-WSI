@@ -15,6 +15,7 @@ const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 var app = express();
 const passport = require('passport');
+const expressLayouts = require('express-ejs-layouts')
 
 // mongoDB connection
 mongodb.dbConnect();
@@ -22,6 +23,8 @@ mongodb.dbConnect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout', 'layouts/layout')
+app.use(expressLayouts)
 
 app.use(cookieSession({
   maxAge:24 * 60 * 60 *1000,
