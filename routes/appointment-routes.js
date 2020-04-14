@@ -18,7 +18,7 @@ const authCheck = (req,res,next) =>{
 };
 
 router.get('/',authCheck,(req,res)=>{  
-  res.render('appointment',{user:req.user});
+  res.render('appointment',{user:req.user, success: ''});
 });
 
 router.post('/appt-success',authCheck,(req,res)=>{
