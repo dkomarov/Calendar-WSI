@@ -15,7 +15,7 @@ const cookieSession = require('cookie-session');
 const keys = require('./config/keys');
 var app = express();
 const passport = require('passport');
-const expressLayouts = require('express-ejs-layouts')
+const expressLayouts = require('express-ejs-layouts');
 
 // mongoDB connection
 mongodb.dbConnect();
@@ -23,8 +23,9 @@ mongodb.dbConnect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('layout', 'layouts/layout')
-app.use(expressLayouts)
+app.set('layout', 'layouts/layout');
+app.use(expressLayouts);
+app.set(passportSetup);
 
 app.use(cookieSession({
   maxAge:24 * 60 * 60 *1000,
@@ -33,7 +34,7 @@ app.use(cookieSession({
 
 app.use(methodOverride('_method'));
 
-//initialize passport
+// initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -58,7 +59,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

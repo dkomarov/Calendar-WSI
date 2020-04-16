@@ -1,5 +1,6 @@
 const assert = require('chai').assert;
-//const assert = require('assert');
+// const assert = require('assert');
+/* global describe, it */
 
 const gcalFunction = require('../lib/gcalendar');
 
@@ -13,7 +14,7 @@ const calendarData =  {
   recurrence: '3',
   attendees: 'mail@mail.co',
   reminders: 'none'
-}
+};
 
 describe('insertEvent()', function() {
   it('should return an inserted event object', function(){
