@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-// AUTH LOGIN
+// auth LOGIN
 router.get('/login',(req,res)=>{
   res.render('login');
 });
@@ -14,7 +14,7 @@ router.get('/logout',(req,res)=>{
 
 // auth with google
 router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'https:// www.googleapis.com/auth/calendar']
+  scope: ['profile', 'https://www.googleapis.com/auth/calendar']
 }));
 
 // callback route for google to redirect to
