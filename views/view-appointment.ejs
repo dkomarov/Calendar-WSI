@@ -9,9 +9,12 @@
   <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
 </nav>
 
+<h1>Upcoming Events</h1>
+
 <section class="appointment-list">
-  <h1>Upcoming Events</h1>
+
     <table class="table-css">
+
       <thead>
         <tr>
           <th>#</th>
@@ -27,8 +30,8 @@
           <td><%= eve.summary%></td>
           <td><%= eve.start%></td>
           <td><%= eve.end%></td>
-          <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><button class="btn">Edit</button></a></td>
-          <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
+          <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><input type="submit" class="btn" value="Edit"/></a></td>
+          <td><input type="submit" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete"/></td>
         </tr>
         <% }) %>
       </thead>
