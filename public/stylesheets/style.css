@@ -107,18 +107,44 @@ nav a.active{
 #appointmentForm{
   text-align: center;
   display: block;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
-#form{
-  text-align: left;
+h1, h2 {
+  text-align: center;
+  margin: 2em 0em 2em 0em;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+form{
   font-size: 14px;
+}
+
+ol, li {
+ margin: 1em;
+}
+
+label[for="submit"] {
+  position: absolute;
+  left: -99999px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 input[type=text], input[type=number], input[type=date], input[type=time] {
   border: 2px solid rgb(46, 49, 49);
   border-radius: 4px;
   padding: 5px;
-  width: 100%;
+  /* margin-left: 3%; */
+  width: 20%;
 }
 
 input[type=submit], .btn{
@@ -146,9 +172,10 @@ input[type=submit], .btn{
 
 .table-css {
   border: 1px solid #ccc;
-  width: 80%;
+  width: fit-content;
   border-collapse: collapse;
   border-spacing: 0;
+  margin: 0% 5% 0% 5%; /* T R B L */
 }
 
 .table-css tr {
@@ -215,17 +242,3 @@ input[type=submit], .btn{
     opacity: 0;
   }
 }
-/* Edit pop-up form
-#edit-pop-up-form {
-  display: none;
-  width: 30%;
-  position: relative;
-   POSITIONING
-  left: 40%;
-  top: 40%;
-  transform: translate(-40%, 100%);
-  
-  text-align: center;
-  background-color: gold;
-
-} */
