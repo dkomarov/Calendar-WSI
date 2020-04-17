@@ -9,58 +9,48 @@
   <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
 </nav>
 
-<section id="appointmentForm">
-  
-  <%var count = 0%>
-      <% event.forEach(function (eve) { %>
-        <%count++%>
+<main>
 
-  <h1>Update Appointment <%= eve.summary %></h1>
+    <%var count = 0%>
+        <% event.forEach(function (eve) { %>
+          <%count++%>
 
-<form method="post" action="/appointment/view-appointment" onsubmit="return formValidation()">
-      <table id="form">
-        <tr id="mongoID">
-          <td>mongoid:</td><td><input type="text" id="mongoID" name="mongoID" value="<%= eve._id %>"></td>
-        </tr>
-        <tr id="eventID">
-          <td>id:</td><td><input type="text" id="eventID" name="eventID" value="<%= eve.event_id %>"></td>
-        </tr>
-        <tr>
-          <td>Summary:</td><td><input type="text" id="summary" name="summary" value="<%= eve.summary %>"></td>
-        </tr>
-        <tr>
-          <td>Location:</td><td><input type="text" id="location" name="location" value="<%= eve.location %>"></td>
-        </tr>
-        <tr>
-          <td>Description:</td><td><input type="text" id="description" name="description" value="<%= eve.description %>"></td>
-        </tr>
-        <tr>
-          <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
-        </tr>
-        <tr>
-          <td>End Date:</td><td><input type="date" id="endDate" name="endDate"></td>
-        </tr>
-        <tr>
-          <td>Start Time:</td><td><input type="time" id="startTime" name="startTime"></td>
-        </tr>
-        <tr>
-          <td>End Time</td><td><input type="time" id="endTime" name="endTime"></td>
-        </tr>
-        <tr>
-          <td>Recurrence: (#)</td><td><input type="number" id="recurrence" name="recurrence"></td>
-        </tr>
-        <tr>
-          <td>Attendee Email(s):</td><td><input type="text" id="attendees" name="attendees"></td>
-        </tr>
-        <tr>
-          <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
-        </tr>
-      </table>
-      <br>
-      <span id="error"></span>
-      <input type="submit" value="Update"/>
+    <h1>Update Appointment <%= eve.summary %></h1>
+    
+  <form id="appointmentForm" method="post" action="/appointment/view-appointment" onsubmit="return formValidation()">
+
+      <ol>
+        <li id="mongoID"><label>mongoid:</label><input type="text" id="mongoID" name="mongoID" value="<%= eve._id %>"></li>
+        
+        <li id="eventID"><label>id:</label><input type="text" id="eventID" name="eventID" value="<%= eve.event_id %>"></li>
+        
+        <li><label for="summary    ">Event Name </label><input type="text" id="summary" name="summary" value="<%= eve.summary %>"></li>
+        
+        <li><label for="location   ">Location   </label><input type="text" id="location" name="location" value="<%= eve.location %>"></li>
+
+        <li><label for="description">Description</label><input type="text" id="description" name="description" value="<%= eve.description %>"></li>
+       
+        <li><label for="startDate  ">Start Date </label><input type="date" id="startDate" name="startDate"></li>
+        
+        <li><label for="endDate    ">End Date   </label><input type="date" id="endDate" name="endDate"></li>
+       
+        <li><label for="startTime  ">Start Time </label><input type="time" id="startTime" name="startTime"></li>
+
+        <li><label for="endTime    ">End Time   </label><input type="time" id="endTime" name="endTime"></li>
+
+        <li><label for="recurrence ">Recurrence </label><input type="number" id="recurrence" name="recurrence"></li>
+
+        <li><label for="attendees  ">Email      </label><input type="text" id="attendees" name="attendees"></li>
+
+        <li><label for="reminders  ">Notes      </label><input type="text" id="reminders" name="reminders"></li>
+
+        <span id="error"></span>
+
+        <li><label for="submit">Update</label><input type="submit" value="Update" /></li>
+      </ol>
     </form>
     <% }) %>
-  </section>
+
+</main>
 
   <script rel="javascripts" src="/javascripts/scripts.js"></script>
