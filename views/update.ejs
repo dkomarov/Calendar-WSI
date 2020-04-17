@@ -23,7 +23,7 @@
             <% event.forEach(function (eve) { %>
               <%count++%>
         <h1>Update Appointment <%= eve.summary %></h1>
-   <form method="post" action="/appointment/view-appointment" onsubmit="return formValidation()">
+   <form method="post" action="/appointment/view-appointment" id="formVal">
           <table id="form">
             <tr id="mongoID">
               <td>mongoid:</td><td><input type="text" id="mongoID" name="mongoID" value="<%= eve._id %>"></td>
