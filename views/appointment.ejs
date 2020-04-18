@@ -28,39 +28,39 @@
         <form method="post" action="/appointment" id="appt-form">
           <table id="form">
             <tr>
-              <td>Summary:</td><td><input type="text" id="summary" name="summary"></td>
+              <td>Summary:</td><td><input type="text" id="summary" name="summary" required></td>
             </tr>
             <tr>
-              <td>Location:</td><td><input type="text" id="location" name="location"></td>
+              <td>Location:</td><td><input type="text" id="location" name="location" required></td>
             </tr>
             <tr>
-              <td>Description:</td><td><input type="text" id="description" name="description"></td>
+              <td>Description:</td><td><input type="text" id="description" name="description" required></td>
             </tr>
             <tr>
-              <td>Start Date:</td><td><input type="date" id="startDate" name="startDate"></td>
+              <td>Start Date:</td><td><input type="date" id="startDate" name="startDate" required></td>
             </tr>
             <tr>
-              <td>End Date:</td><td><input type="date" id="endDate" name="endDate"></td>
+              <td>End Date:</td><td><input type="date" id="endDate" name="endDate" required></td>
             </tr>
             <tr>
-              <td>Start Time:</td><td><input type="time" id="startTime" name="startTime"></td>
+              <td>Start Time:</td><td><input type="time" id="startTime" name="startTime" required></td>
             </tr>
             <tr>
-              <td>End Time</td><td><input type="time" id="endTime" name="endTime"></td>
+              <td>End Time</td><td><input type="time" id="endTime" name="endTime" required></td>
             </tr>
             <tr>
-              <td>Recurrence: (#)</td><td><input type="number" id="recurrence" name="recurrence"></td>
+              <td>Recurrence: (#)</td><td><input type="number" id="recurrence" name="recurrence" required></td>
             </tr>
             <tr>
-              <td>Attendee Email(s):</td><td><input type="text" id="attendees" name="attendees"></td>
+              <td>Attendee Email(s):</td><td><input type="text" id="attendees" name="attendees" required></td>
             </tr>
             <tr>
-              <td>Reminders:</td><td><input type="text" id="reminders" name="reminders"></td>
+              <td>Reminders:</td><td><input type="text" id="reminders" name="reminders" required></td>
             </tr>
           </table>
           <br>
           <span id="error">fgfg</span>
-          <input id="formVal" type="button" value="Submit" />
+          <input id="formVal" type="submit" value="Submit" />
         </form>
       </section>
       <script rel="javascripts" src="/javascripts/scripts.js"></script>
