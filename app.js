@@ -1,14 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongodb = require('./lib/connect');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var authRoutes = require('./routes/auth-routes');
 var menuRoutes = require('./routes/menu');
-var methodOverride = require('method-override');
 const passportSetup = require('./config/passport-setup');
 var appointmentRoutes = require('./routes/appointment-routes');
 const cookieSession = require('cookie-session');
@@ -32,8 +30,6 @@ app.use(cookieSession({
   keys:[keys.session.cookieKey]
 }));
 
-app.use(methodOverride('_method'));
-
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,7 +37,6 @@ app.use(passport.session());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
