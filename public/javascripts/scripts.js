@@ -4,6 +4,8 @@ window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('formVal').addEventListener('click', function() {
     if (formValidation() == true) {
       document.forms['appt-form'].submit();
+    }else{
+      document.getElementById('error').style.display = "block";
     }
   });
 });
