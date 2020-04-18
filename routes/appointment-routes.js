@@ -26,8 +26,8 @@ router.post('/appt-success',authCheck,(req,res)=>{
 
   let rb = req.body;
 
-  startDateObj = new Date(rb.startTime + ' ' + rb.startDate); // .toISOString();
-  endDateObj = new Date(rb.endTime+ ' ' + rb.endDate); // .toISOString();
+  startDateObj = new Date(rb.startTime + ' ' + rb.startDate).toISOString();
+  endDateObj = new Date(rb.endTime+ ' ' + rb.endDate).toISOString();
 
   calendarData = {
     _id: mongoose.Types.ObjectId(),
@@ -64,14 +64,11 @@ router.post('/view-appointment', authCheck, (req, res)=>{
   // console.log('rb.startDate is: ' + rb.startDate)
   // console.log('rb.startTime is: ' + rb.startTime)
 
-  startDateObj = new Date(rb.startTime + ' ' + rb.startDate); // .toISOString();
-  endDateObj = new Date(rb.endTime+ ' ' + rb.endDate); // .toISOString();
+  startDateObj = new Date(rb.startTime + ' ' + rb.startDate).toISOString();
+  endDateObj = new Date(rb.endTime+ ' ' + rb.endDate).toISOString();
 
-  console.log('startDateObj is: ' + startDateObj);
-  console.log('endDateObj is: ' + endDateObj);
-
-  // console.log(Date(startDateObj.getTimezoneOffset()));
-  // console.log(Date(endDateObj.getTimezoneOffset()));
+  // console.log('startDateObj is: ' + startDateObj);
+  // console.log('endDateObj is: ' + endDateObj);
   
   newData = {
     'mongoID': rb.mongoID,
@@ -79,8 +76,9 @@ router.post('/view-appointment', authCheck, (req, res)=>{
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
-    'start' : startDateObj,
-    'end' : endDateObj,
+    'start': startDateObj,
+    'end': endDateObj,
+    'recurrence': rb.recurrence,
     'attendees': rb.attendees,
     'reminders': rb.reminders
   };
