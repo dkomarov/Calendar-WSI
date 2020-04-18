@@ -1,19 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var mongodb = require('./lib/connect');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var authRoutes = require('./routes/auth-routes');
-var menuRoutes = require('./routes/menu');
-const passportSetup = require('./config/passport-setup');
-var appointmentRoutes = require('./routes/appointment-routes');
+const app = express();
+const appointmentRoutes = require('./routes/appointment-routes');
+const authRoutes = require('./routes/auth-routes');
 const cookieSession = require('cookie-session');
-const keys = require('./config/keys');
-var app = express();
-const passport = require('passport');
+const createError = require('http-errors');
+const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const indexRouter = require('./routes/index');
+const keys = require('./config/keys');
+const logger = require('morgan');
+const menuRoutes = require('./routes/menu');
+const mongodb = require('./lib/connect');
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
+const path = require('path');
+const usersRouter = require('./routes/users');
 
 // mongoDB connection
 mongodb.dbConnect();
