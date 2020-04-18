@@ -1,63 +1,42 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-    <title>Appointment List</title>
-  </head>
-  <body>
-    <nav>
-      <a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png" alt="appt-logo"></a>
-      <a href="/appointment"><span id="form-icon"></span>Appointment Form</a>
-      <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
-    </nav>
-    <section class="appointment-list">
-      <h1>Upcoming Events</h1>
-      <section class="appointment-list">
-        <table class="table-css">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Event Name</th>
-              <th>Event start</th>
-              <th>Event End</th>
-            </tr>
-            <%var count = 0%>
-            <% events.forEach(function (eve) { %>
-              <%count++%>
-            <tr>
-              <td><%=count%></td>
-              <td><%= eve.summary%></td>
-              <td><%= eve.start%></td>
-              <td><%= eve.end%></td>
-              <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><button class="btn">Edit</button></a></td>
-              <td><button class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')">Delete</button></td>
-            </tr>
-            <% }) %>
-          </thead>
-        </table>
-      </section>
-    </section>
-        <!-- <div>
-      <form id = "edit-pop-up-form" method="post" action="/appointment/view-appointment?_method=PUT" onsubmit="return(edit())">
-        Summary: <input type="text" id="summary" name="summary">
-        Location:  <input type="text" id="location" name="summary">
-        Description:  <input type="text" id="description" name="description">
-        Start-Date:  <input type="date" id="startDate" name="startDate">
-        End-Date:  <input type="date" id="endDate" name="endDate">
-        Start-Time:  <input type="time" id="startTime" name="startTime">
-        End-Time:  <input type="time" id="endTime" name="endTime">
-        Recurrence:  <input type="number" id="recurrence" name="recurrence">
-        Email:  <input type="text" id="attendees" name="attendees">
-        Reminders:  <input type="text" id="reminders" name="reminders">
-        <input type="submit" value="Save Changes">
-      </form>
-    </div> -->
-    <script rel="javascripts" src="/javascripts/scripts.js"></script>
-  </body>
-</html>
+<title>Appointment List</title>
+
+<meta name="google-signin-client_id" content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+
+<nav>
+  <a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png" alt="appt-logo"></a>
+  <a href="/appointment"><span id="form-icon"></span>Appointment Form</a>
+  <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
+</nav>
+
+<h1>Upcoming Events</h1>
+
+<section class="appointment-list">
+
+    <table class="table-css">
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Event Name</th>
+          <th>Event start</th>
+          <th>Event End</th>
+        </tr>
+        <%var count = 0%>
+        <% events.forEach(function (eve) { %>
+          <%count++%>
+        <tr>
+          <td><%=count%></td>
+          <td><%= eve.summary%></td>
+          <td><%= eve.start%></td>
+          <td><%= eve.end%></td>
+          <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><input type="submit" class="btn" value="Edit"/></a></td>
+          <td><input type="submit" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete"/></td>
+        </tr>
+        <% }) %>
+      </thead>
+    </table>
+  </section>
+
+<script rel="javascripts" src="/javascripts/scripts.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
