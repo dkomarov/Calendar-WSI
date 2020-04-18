@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-'use strict';
 
 /**
- * module dependencies.
+ * Module dependencies.
  */
 
 var app = require('../app');
@@ -10,27 +9,27 @@ var debug = require('debug')('appointmentsystem:server');
 var http = require('http');
 
 /**
- * get port from environment and store in Express.
+ * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-
 app.set('port', port);
 
 /**
- * create HTTP server.
+ * Create HTTP server.
  */
 
 var server = http.createServer(app);
 
 /**
- * listen on provided port, on all network interfaces.
+ * Listen on provided port, on all network interfaces.
  */
 
 try {
-  server.listen(port);
-  console.log('\nServer is running. To connect, go to: http://localhost:3000\n');
-} catch (err) {
+server.listen(port);
+console.log("\nServer deployed. To connect, go to: http://localhost:3000\n");
+}
+catch (err) {
   console.log(err);
 }
 
