@@ -10,9 +10,10 @@ var newData = {};
 /**
  * Checks if the user is alredy loggedIn
  * @function authCheck
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {object} req - The request object 
+ * @param {object} res - The response object
+ * @param {object} next - The next object
+ * @param {object} req.user - Google User object
  */
 const authCheck = (req,res,next) =>{
     if(!req.user){
