@@ -1,3 +1,11 @@
+/**
+ * @module routers
+ */
+
+ /**
+ * router module
+ * @const
+ */
 const router = require('express').Router();
 const mongoose = require('mongoose');
 const gcalFunction = require('../lib/gcalendar');
@@ -9,6 +17,7 @@ var newData = {};
 
 /**
  * Checks if the user is alredy loggedIn
+ * @memberof module:routers
  * @function authCheck
  * @param {object} req - The request object 
  * @param {object} res - The response object
@@ -24,10 +33,27 @@ const authCheck = (req,res,next) =>{
     }
 };
 
+/**
+ * Route to index page
+ * @name get/appointment
+ * @function
+ * @memberof module:routers
+ * @inner
+ * @param {object} user - Send the user object
+ * @param {string} success - Store Success message
+ */
 router.get('/',authCheck,(req,res)=>{  
   res.render('appointment',{user:req.user, success: ''});
 });
 
+/**
+ * Route to view appointment page
+ * @name get/view-appointment
+ * @function gcalFunction
+ * @memberof module:routers
+ * @inner
+ * @param {object} req.user.googleId - user googleID
+ */
 router.get('/view-appointment',authCheck,(req,res)=>{
   gcalFunction.listEvent(req.user.googleId);
   getAppointmentList(res,req);
