@@ -1,3 +1,13 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* stylelint-disable */
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}html{line-height:1}body{line-height:inherit}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+/* stylelint-enable */
+
+/* Begin site styles below */
+
 body {
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -97,18 +107,44 @@ nav a.active{
 #appointmentForm{
   text-align: center;
   display: block;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
-#form{
-  text-align: left;
+h1, h2 {
+  text-align: center;
+  margin: 2em 0em 2em 0em;
+}
+
+main {
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+form{
   font-size: 14px;
+}
+
+ol, li {
+ margin: 1em;
+}
+
+label[for="submit"] {
+  position: absolute;
+  left: -99999px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 input[type=text], input[type=number], input[type=date], input[type=time] {
   border: 2px solid rgb(46, 49, 49);
   border-radius: 4px;
   padding: 5px;
-  width: 100%;
+  /* margin-left: 3%; */
+  width: 20%;
 }
 
 input[type=submit], .btn{
@@ -136,9 +172,10 @@ input[type=submit], .btn{
 
 .table-css {
   border: 1px solid #ccc;
-  width: 80%;
+  width: fit-content;
   border-collapse: collapse;
   border-spacing: 0;
+  margin: 0% 5% 0% 5%; /* T R B L */
 }
 
 .table-css tr {
@@ -205,17 +242,3 @@ input[type=submit], .btn{
     opacity: 0;
   }
 }
-/* Edit pop-up form
-#edit-pop-up-form {
-  display: none;
-  width: 30%;
-  position: relative;
-   POSITIONING
-  left: 40%;
-  top: 40%;
-  transform: translate(-40%, 100%);
-  
-  text-align: center;
-  background-color: gold;
-
-} */

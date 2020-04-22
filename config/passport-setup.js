@@ -1,20 +1,22 @@
+'use strict';
+
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20');
 const keys = require('./keys');
 const User = require('../models/user-model');
 passport.serializeUser((user, done)=> {
-    done(null, user.id);
+  done(null, user.id);
 });
 
 passport.deserializeUser((id,done)=> {
-    User.findById(id).then((user)=> {
-        done(null,user);
-    });
+  User.findById(id).then((user)=> {
+    done(null,user);
+  });
 });
 
 passport.use(
-    new GoogleStrategy({
-    //options gor the google strategies
+  new GoogleStrategy({
+    // options for the google strategies
     callbackURL: '/auth/google/redirect',
     clientID: keys.google.clientID,
     clientSecret: keys.google.clientSecret,
@@ -48,4 +50,3 @@ passport.use(
         });
     })
 )
-
