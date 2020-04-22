@@ -75,8 +75,8 @@ router.post("/view-appointment", authCheck, (req, res)=>{
   // console.log("rb.startDate is: " + rb.startDate)
   // console.log("rb.startTime is: " + rb.startTime)
 
-  startDateObj = new Date(rb.startTime + " " + rb.startDate) //.toISOString();
-  endDateObj = new Date(rb.endTime+ " " + rb.endDate) //.toISOString();
+  startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
+  endDateObj = new Date(rb.endTime+ " " + rb.endDate).toISOString();
 
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
