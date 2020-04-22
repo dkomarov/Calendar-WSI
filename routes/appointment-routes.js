@@ -55,7 +55,7 @@ router.get('/',authCheck,(req,res)=>{
  * @param {object} req.user.googleId - user googleID
  */
 router.get('/view-appointment',authCheck,(req,res)=>{
-  gcalFunction.listEvent(req.user.googleId);
+  gcalFunction.listEvent(req.user);
   getAppointmentList(res,req);
 });
 
@@ -97,7 +97,7 @@ router.post("/view-appointment", authCheck, (req, res)=>{
 
   async function run(){
     gcalFunction.updateEvent(newData);
-    gcalFunction.listEvent(req.user.googleId);
+    gcalFunction.listEvent(req.user);
   }
   run().then(getAppointmentList(res, req));
 })
@@ -108,7 +108,7 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
 
   async function run(){
     gcalFunction.deleteEvent(e);
-    gcalFunction.listEvent(req.user.googleId);
+    gcalFunction.listEvent(req.user);
   }
   run().then(getAppointmentList(res,req));
 });
@@ -142,7 +142,7 @@ router.post("/", function(req, res){
       'reminders': rb.reminders
    }
     console.log(calendarData);
-    gcalFunction.insEvent(calendarData);
+    gcalFunction.insEvent(calendarData, req.user);
     res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
   });
   
