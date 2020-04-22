@@ -1,12 +1,9 @@
 //validates the appointment form before proccessing further
 
-window.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('formVal').addEventListener('click', function() {
-    if (formValidation() == true) {
-      document.forms['appt-form'].submit();
-    }
-  });
-});
+window.onload=function() {
+  var submit = document.querySelector('input[type="submit"]');
+  submit.addEventListener("click", formValidation);
+}
 
 function formValidation(){
 

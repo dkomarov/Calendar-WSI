@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha",
-    "docs": "jsdoc -c jsdoc.json"
+    "test": "mocha"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "~1.4.4",
     "cookie-session": "^1.4.0",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
@@ -21,8 +20,5 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0"
-  },
-  "devDependencies": {
-    "jsdoc": "^3.6.4"
   }
 }
