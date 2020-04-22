@@ -1,5 +1,6 @@
 //validates the appointment form before proccessing further
 
+
 window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('formVal').addEventListener('click', function() {
     if (formValidation() == true) {
@@ -7,6 +8,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
 
 function formValidation(){
 
