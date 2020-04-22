@@ -1,12 +1,20 @@
-<title>Main Menu</title>
-
-<nav>
-  <img class="logo view-appointment" src="/images/logo.png" />
-  <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
-  <a href="./appointment"><span id="create-appointment"></span>Create Appointment</a>
-  <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
-</nav>
-
-<section id="appointmentForm">
-  <h1>Welcome, <%=user.userName%></h1>
-</section>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <title>Main Menu</title>
+  <body>
+    <nav>
+      <img class="logo view-appointment" src="/images/logo.png" />
+      <a href="/appointment/view-appointment"><span id="view-appointment"></span>View Appointments</a>
+      <a href="/appointment"><span id="create-appointment"></span>Create Appointment</a>
+      <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
+    </nav>
+    <section id="appointmentForm">
+      <h1>Welcome, <%=user.userName%></h1>
+    </section>
+  </body>
+</html>

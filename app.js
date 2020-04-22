@@ -1,19 +1,20 @@
-const appointmentRoutes = require('./routes/appointment-routes');
-const authRoutes = require('./routes/auth-routes');
-const cookieSession = require('cookie-session');
-const createError = require('http-errors');
-const express = require('express');
-const app = express();
-const expressLayouts = require('express-ejs-layouts');
-const indexRouter = require('./routes/index');
-const keys = require('./config/keys');
-const logger = require('morgan');
-const menuRoutes = require('./routes/menu');
-const mongodb = require('./lib/connect');
-const passport = require('passport');
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+var mongodb = require('./lib/connect');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var authRoutes = require('./routes/auth-routes');
+var menuRoutes = require('./routes/menu');
+var methodOverride = require('method-override');
 const passportSetup = require('./config/passport-setup');
-const path = require('path');
-const usersRouter = require('./routes/users');
+var appointmentRoutes = require('./routes/appointment-routes');
+const cookieSession = require('cookie-session');
+const keys = require('./config/keys');
+var app = express();
+const passport = require('passport');
 
 // mongoDB connection
 mongodb.dbConnect();
@@ -21,22 +22,22 @@ mongodb.dbConnect();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('layout', 'layouts/layout');
-app.use(expressLayouts);
-app.set(passportSetup);
 
 app.use(cookieSession({
   maxAge:24 * 60 * 60 *1000,
   keys:[keys.session.cookieKey]
 }));
 
-// initialize passport
+app.use(methodOverride('_method'));
+
+//initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -54,7 +55,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
