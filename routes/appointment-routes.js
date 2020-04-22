@@ -16,6 +16,7 @@ var endDateObj;
 var newData = {};
 
 
+
 /**
  * Checks if the user is alredy loggedIn
  * @memberof module:routers
@@ -25,6 +26,7 @@ var newData = {};
  * @param {object} next - The next object
  * @param {object} req.user - Google User object
  */
+
 
 const authCheck = (req,res,next) =>{
     if(!req.user){

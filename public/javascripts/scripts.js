@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
 function formValidation(){
 
   var error = document.getElementById('error');
