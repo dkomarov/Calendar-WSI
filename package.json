@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha"
+    "test": "mocha",
+    "docs": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",

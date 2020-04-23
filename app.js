@@ -15,7 +15,9 @@ const passportSetup = require('./config/passport-setup');
 const path = require('path');
 const usersRouter = require('./routes/users');
 
-// mongoDB connection
+/**
+ * @description Connects the application to mongoDB Database
+ */
 mongodb.dbConnect();
 
 // view engine setup
@@ -30,7 +32,9 @@ app.use(cookieSession({
   keys:[keys.session.cookieKey]
 }));
 
-// initialize passport
+/**
+ * @description Initialise the passport
+ */
 app.use(passport.initialize());
 app.use(passport.session());
 
