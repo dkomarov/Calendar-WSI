@@ -1,3 +1,11 @@
+/** @file An ExpressJS web app that allows users to book appointments with each other using Google Calendar API data 
+ * @author Denis Komarov <dkomarov@hawk.iit.edu>
+ * @author Dhiraj Jain <djain14@hawk.iit.edu> 
+ * @author Jimmy Tran <jtran8@hawk.iit.edu>
+ * 
+*/
+'use strict';
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
