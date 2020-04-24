@@ -30,46 +30,55 @@ function formValidation(){
   }
   if(location.value == ""){
     location.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Location can't be empty."
     return false;
   }
   if(description.value == ""){
     description.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Description can't be empty."
     return false;
   }
   if(startDate.value == ""){
     startDate.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Enter valid Date mm/dd/YYYY"
     return false;
   }
   if(startTime.value == ""){
     startTime.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Enter valid time HH:mm"
     return false;
   }
   if(endDate.value == ""){
     endDate.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Enter valid Date mm/dd/YYYY"
     return false;
   }
   if(endTime.value == ""){
     endTime.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Enter valid time HH:mm"
     return false;
   }
   if(recurrence.value == "" || recurrence.value <= 0){
     recurrence.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Recurrence can't be empty or less than zero"
     return false;
   }
   if(attendees.value == ""){
     attendees.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Attendees can't be empty."
     return false;
   }
   if(reminders.value == ""){
     reminders.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Reminders can't be empty."
     return false;
   }
