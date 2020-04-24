@@ -4,7 +4,7 @@ const assert = require('chai').assert;
 
 const gcalFunction = require('../lib/gcalendar');
 
-const calendarData =  {
+const calendarData = {
   _id: '5e928d5da2f4db9e1a413205',
   summary: 'event5',
   location: 'loc',
@@ -16,8 +16,8 @@ const calendarData =  {
   reminders: 'none'
 };
 
-describe('insertEvent()', function() {
-  it('should return an inserted event object', function(){
+describe('insertEvent()', function () {
+  it('should return an inserted event object', function () {
     assert.isObject(gcalFunction.insEvent(calendarData), 'object');
   });
 });
