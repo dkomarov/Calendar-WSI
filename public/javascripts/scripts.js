@@ -24,6 +24,7 @@ function formValidation(){
 
   if(summary.value == ""){
     summary.focus();
+    document.getElementById('error').style.display = 'block';
     error.innerHTML = "Summary can't be empty."
     return false;
   }
