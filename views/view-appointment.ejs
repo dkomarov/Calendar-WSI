@@ -9,10 +9,10 @@
   <a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a>
 </nav>
 
-<h1>Upcoming Events</h1>
+
 
 <section class="appointment-list">
-
+  <h1>Upcoming Events</h1>
     <table class="table-css">
 
       <thead>
@@ -21,6 +21,7 @@
           <th>Event Name</th>
           <th>Event start</th>
           <th>Event End</th>
+          <th colspan="2">Manage Events</th>
         </tr>
         <%var count = 0%>
         <% events.forEach(function (eve) { %>
