@@ -111,7 +111,7 @@ input[type=text], input[type=number], input[type=date], input[type=time] {
   width: 100%;
 }
 
-input[type=submit], .btn{
+input[type=button], .btn{
   background-color: rgb(30, 139, 195);
   border: none;
   color: white;
