@@ -8,12 +8,7 @@
     "docs": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "chai": "^4.2.0",
-    "cookie-parser": "~1.4.4",
-=======
     "cookie-parser": "^1.4.5",
->>>>>>> 7562d42138e3133131789a0b02a1cd53028c4b24
     "cookie-session": "^1.4.0",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
@@ -31,13 +26,9 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "jsdoc": "^3.6.4"
-=======
     "jsdoc": "^3.6.4",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "mocha": "^7.1.1"
->>>>>>> 7562d42138e3133131789a0b02a1cd53028c4b24
   }
 }
