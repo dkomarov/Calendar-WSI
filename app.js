@@ -20,6 +20,8 @@ const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const path = require('path');
 const usersRouter = require('./routes/users');
+const authRoutes = require('./routes/auth-routes');
+const appointmentRoutes = require('./routes/appointment-routes');
 
 /**
  * @description Connects the application to mongoDB Database
