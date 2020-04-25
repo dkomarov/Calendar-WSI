@@ -42,7 +42,7 @@ const authCheck = (req, res, next) => {
  * @name get/appointment
  * @function
  * @memberof module:routers
- * @inner
+ * @route {get} /appointment
  * @param {object} user - Send the user object
  * @param {string} success - Store Success message
  */

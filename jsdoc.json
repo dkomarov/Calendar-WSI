@@ -4,7 +4,7 @@
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(node_modules/|docs)"
     },
-    "plugins": ["plugins/markdown"],
+    "plugins": ["plugins/markdown" , "jsdoc-route-plugin"],
     "opts": {
         "encoding": "utf8",
         "readme": "./readme.md",
