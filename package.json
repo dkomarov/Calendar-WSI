@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "test": "mocha",
-    "docs": "jsdoc -c jsdoc.conf.json -r ./"
+    "docs": "jsdoc -c ./jsdoc.conf.json -r ./"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
