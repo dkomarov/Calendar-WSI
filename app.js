@@ -28,8 +28,8 @@ app.use(expressLayouts);
 app.set(passportSetup);
 
 app.use(cookieSession({
-  maxAge:24 * 60 * 60 *1000,
-  keys:[keys.session.cookieKey]
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
 }));
 
 /**
@@ -46,19 +46,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.use('/auth',authRoutes);
+app.use('/auth', authRoutes);
 app.use('/menu', menuRoutes);
-app.use('/appointment',appointmentRoutes);
+app.use('/appointment', appointmentRoutes);
 app.use('/appointment/appt-success', appointmentRoutes);
-app.use('/appointment/view-appointment',appointmentRoutes);
+app.use('/appointment/view-appointment', appointmentRoutes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res) {
+app.use(function (err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
