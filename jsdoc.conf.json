@@ -1,6 +1,16 @@
 {
     "source": {
-        "exclude": ["node_modules/"],
-        "includePattern": ".+\\.js(doc|x)?$"
+      "include": ["./"],
+      "exclude": ["node_modules/"],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": ["plugins/markdown"],
+    "opts": {
+        "encoding": "utf8",
+        "readme": "./readme.md",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true
     }
-}
+  }
