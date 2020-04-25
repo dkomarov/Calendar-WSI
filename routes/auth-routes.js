@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
+const gcalFunction = require('../lib/gcalendar');
 
 // auth LOGIN
 router.get('/login', (req, res) => {
@@ -20,6 +21,7 @@ router.get('/google', passport.authenticate('google', {
 // callback route for google to redirect to
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
   // res.send('you have reached the call back URL!!!');
+  gcalFunction.getList(req.user);
   res.redirect('/menu');
 });
 
