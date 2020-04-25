@@ -1,10 +1,40 @@
-<title>Application Login</title>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-<nav>
-  <img class="logo view-appointment" src="/images/logo.png" />
-  <a href="/auth/google" class="google-btn">Login with Google</a>
+<head>
+  <meta charset="utf-8">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <meta name="google-signin-client_id"
+    content="351815199905-7866h3vhn4lrd4qbe8bk0l8sej8qdaj2.apps.googleusercontent.com">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+  <script src="https://kit.fontawesome.com/a05bed8e85.js" crossorigin="anonymous"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <title>Appointment System</title>
+</head>
+
+
+<nav id="navID">
+  <input type="checkbox" id="nav-menu">
+  <label for="nav-menu">
+    <i class="fas fa-bars" id="sign-one"></i>
+      <i class="fas fa-times" id="sign-two"></i>
+     </label>
+    <h1><a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png"
+      alt="appt-logo"></a></h1>
+    <ul>
+      <li><a href="/auth/google">Login with Google</a></li>
+    </ul>
 </nav>
 
 <section class="main-logo">
   <img src="/images/websystem.png" id="websystempng" />
 </section>
+
+<script rel="javascripts" src="/javascripts/scripts.js"></script>
+</body>
+
+</html>
