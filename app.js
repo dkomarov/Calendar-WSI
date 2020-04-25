@@ -32,10 +32,6 @@ const createError = require('http-errors');
  */
 const express = require('express');
 
-/** Require module for MongoDB connection.
- * @requires mongoose
- */
-
  /** App constant using express middleware.
  * @const {object} app 
  */

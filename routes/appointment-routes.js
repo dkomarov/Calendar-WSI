@@ -1,30 +1,59 @@
-/**
- * @module routers
+/** Appointment routes module.
+ * @module lib/appointment-routes
  */
 
- /**
- * router module
- * @const
+/** Require module for express lightweight middleware.
+ * @requires express
  */
-const router = require('express').Router();
+const express = require('express');
+
+/** Require module for express router.
+ * @requires Router
+ */
+const router = express.Router();
+
+/** Require module for MongoDB connection.
+ * @requires mongoose
+ */
 const mongoose = require('mongoose');
+
+/** Require module for gCal function in gcalendar file.
+ * @requires gcalendar
+ */
 const gcalFunction = require('../lib/gcalendar');
+
+/** Require module for event model file.
+ * @requires event_model
+ */
 const Event = require('../models/event_model');
+
+/** Calendar data object variable.
+ * @var {object} calendarData
+ */
 var calendarData = {};
+
+/** Start date data object variable.
+ * @var {object} startDateObj
+ */
 var startDateObj;
+
+/** End date data object variable.
+ * @var {object} endDateObj
+ */
 var endDateObj;
+
+/** Updated user data object variable.
+ * @var {object} newData
+ */
 var newData = {};
 
-/**
- * Checks if the user is alredy loggedIn
- * @memberof module:routers
+/** Authentication check to see if the user is already logged in
  * @function authCheck
  * @param {object} req - The request object 
  * @param {object} res - The response object
  * @param {object} next - The next object
  * @param {object} req.user - Google User object
  */
-
 const authCheck = (req,res,next) =>{
     if(!req.user){
         // if user is not logged in
@@ -34,12 +63,8 @@ const authCheck = (req,res,next) =>{
     }
 };
 
-/**
- * Route to index page
+/** Route to index page
  * @name get/appointment
- * @function
- * @memberof module:routers
- * @inner
  * @param {object} user - Send the user object
  * @param {string} success - Store Success message
  */
@@ -47,24 +72,28 @@ router.get('/',authCheck,(req,res)=>{
   res.render('appointment',{user:req.user, success: ''});
 });
 
-/**
- * Route to view appointment page
+/** Route to view appointment page
  * @name get/view-appointment
- * @function gcalFunction
- * @memberof module:routers
- * @inner
- * @param {object} req.user.googleId - user googleID
+ * @param {object} req.user.googleId - User Google ID
  */
 router.get('/view-appointment',authCheck,(req,res)=>{
   gcalFunction.listEvent(req.user);
   getAppointmentList(res,req);
 });
 
+/** Routing to update appointment by ID
+ * @name get/view-appointment
+ * @param {object} req.params.id - User Event ID
+ */
 router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   console.log('Passed ID: '+req.params.id);
   getAppointmentInfo(res, req);
 });
 
+/** Routing to update appointment by ID
+ * @name get/view-appointment
+ * @param {object} req.params.id - User Event ID
+ */
 router.post("/view-appointment", authCheck, (req, res)=>{
   //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
