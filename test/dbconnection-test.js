@@ -2,9 +2,19 @@
  * @module test/dbconnection-test
  */
 
+ /** Require module for mocha testing.
+ * @requires mocha
+ */
 const mocha = require('mocha');
+
+/** Require module for MongoDB connection.
+ * @requires mongoose
+ */
 var mongoose = require('mongoose');
 
+/** Mocha describe method for function testing 
+ * @name describe
+*/
 describe('mongoDB database Tests', function(){
     it('should connect successfully to mongoDB database', function() {
         before('connect', function(){
