@@ -10,6 +10,14 @@ const mongoose = require('mongoose');
 
 /** Event data schema object.
  * @const {object} eventSchema
+ * @param {object} _id - Mongoose object ID
+ * @param {string} event_id - Google calendar event ID
+ * @param {string} userID - User google ID
+ * @param {string} summary - Appointment summary
+ * @param {string} location - Appointment location
+ * @param {string} description - Appointment description
+ * @param {string} start - Appointment start date&time
+ * @param {string} end - Appointment end date&time
  */
 const eventSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,

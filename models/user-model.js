@@ -15,6 +15,10 @@ const Schema = mongoose.Schema;
 
 /** User data schema object.
  * @const {object} userSchema
+ * @param {string} userName - Users' name
+ * @param {string} googleId - Users' google ID
+ * @param {string} googleToken - Users' google token
+ * @param {string} googleRefresh - Google refresh
  */
 const userSchema = new Schema({
     userName: String,
