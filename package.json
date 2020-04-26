@@ -25,17 +25,11 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "chai": "^4.2.0",
-    "eslint": "^6.8.0",
-    "jsdoc": "^3.6.4",
-=======
     "better-docs": "^1.4.7",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "jsdoc": "^3.6.4",
     "jsdoc-route-plugin": "^0.1.0",
->>>>>>> 294242201dae85fd9c8e539450812987b748d329
     "mocha": "^7.1.1"
   }
 }
