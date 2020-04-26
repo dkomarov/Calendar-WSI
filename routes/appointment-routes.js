@@ -72,7 +72,7 @@ router.get('/',authCheck,(req,res)=>{
   res.render('appointment',{user:req.user, success: ''});
 });
 
-/** Route to view appointment page
+/** Route to get view appointment page
  * @name get/view-appointment
  * @param {object} req.user.googleId - User Google ID
  */
@@ -82,7 +82,7 @@ router.get('/view-appointment',authCheck,(req,res)=>{
 });
 
 /** Routing to update appointment by ID
- * @name get/view-appointment
+ * @name get/view-appointment/update/id
  * @param {object} req.params.id - User Event ID
  */
 router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
@@ -90,25 +90,19 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   getAppointmentInfo(res, req);
 });
 
-/** Routing to update appointment by ID
- * @name get/view-appointment
- * @param {object} req.params.id - User Event ID
+/** Routing to post to view-appointment page.
+ * @name post/view-appointment
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
  */
 router.post("/view-appointment", authCheck, (req, res)=>{
-  //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
-
-  // console.log("rb.startDate is: " + rb.startDate)
-  // console.log("rb.startTime is: " + rb.startTime)
 
   startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
   endDateObj = new Date(rb.endTime+ " " + rb.endDate).toISOString();
 
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
-
-    //  console.log(Date(startDateObj.getTimezoneOffset()));
-    // console.log(Date(endDateObj.getTimezoneOffset()));
 
   newData = {
     'mongoID': rb.mongoID,
@@ -131,10 +125,19 @@ router.post("/view-appointment", authCheck, (req, res)=>{
   run().then(getAppointmentList(res, req));
 })
 
+/** Routing to delete appointment on view-appointment page.
+ * @name delete/view-appointment
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
 router.delete("/view-appointment",authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
+  /** Function to run gCal functions asynchronously
+   * @async
+   * @function run
+   */
   async function run(){
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
@@ -142,19 +145,16 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
   run().then(getAppointmentList(res,req));
 });
 
-// router.get('/appt-success',authCheck,(req,res)=>{
-//   gcalFunction.listEvent(req.user.googleId);
-//   res.render('appt-success',{user:req.user});
-// });
-
+/** Routing to root page served on '/'.
+ * @name post/
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
 router.post("/", function(req, res){
   let rb = req.body;
 
   startDateObj = new Date(rb.startTime +" "+ rb.startDate);
   endDateObj = new Date(rb.endTime +" "+ rb.endDate);
-  
-  // console.log(Date(startDateObj.getTimezoneOffset()));
-  // console.log(Date(endDateObj.getTimezoneOffset()));
   
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
@@ -170,11 +170,17 @@ router.post("/", function(req, res){
     'attendees': rb.attendees,
     'reminders': rb.reminders
   }
+
   console.log(calendarData);
   gcalFunction.insEvent(calendarData, req.user);
   res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
 });
-  
+
+/** Function to get appointment list of authenticated user.
+ * @function getAppointmentList
+ * @param {object} res - Response
+ * @param {object} req - Request
+ */  
 function getAppointmentList(res,req){
   Event.find({userID: req.user.googleId}).exec(function(err, events) {   
     if (err) {
@@ -185,6 +191,11 @@ function getAppointmentList(res,req){
   });
 }
 
+/** Function to get appointment info of authenticated user.
+ * @function getAppointmentInfo
+ * @param {object} res - Response
+ * @param {object} req - Request
+ */  
 function getAppointmentInfo(res, req){
   console.log("Request params is: "+req.params.id);
   Event.find({userID: req.user.googleId}).exec(async function(err) {

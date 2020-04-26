@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: lib/connect.js</title>
+    <title>JSDoc: Source: config/keys.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: lib/connect.js</h1>
+    <h1 class="page-title">Source: config/keys.js</h1>
 
     
 
@@ -26,28 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** MongoDB database connection module.
- * @module lib/connect
+            <pre class="prettyprint source linenums"><code>/** Google client ID/secret and cookie session key module.
+ * @module config/keys
  */
-'use strict';
 
-/** Require module for MongoDB connection.
- * @requires mongoose
- */
-var mongoose = require('mongoose');
-
-/** Exports a module function for database connection.
- * @function dbConnect
- */
 module.exports = {
-  dbConnect: function() {
-    /** mongoDB connection */
-    mongoose.connect('mongodb+srv://itmd567:'+process.env.MONGODB_PW+'@567websystems-qgpxm.azure.mongodb.net/test?retryWrites=true&amp;w=majority', {
-      useUnifiedTopology: true,
-      useNewUrlParser: true
-    }).then(() => console.log('Connected to MongoDB'))
-      .catch(err => console.error('Error: ', err));
-  }
+    google: {
+        clientID: '1012259665491-h9mjitf64jabj5b5fm03umu5c6a84t9o.apps.googleusercontent.com',
+        clientSecret: 'bZtqSBXzK7MtfNHrSOXya8Us'
+    },
+
+    session: {
+        cookieKey: 'websystemjustdoitgroup'
+    }
 };</code></pre>
         </article>
     </section>

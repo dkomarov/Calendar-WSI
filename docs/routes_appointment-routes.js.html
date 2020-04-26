@@ -82,7 +82,6 @@ var newData = {};
  * @param {object} next - The next object
  * @param {object} req.user - Google User object
  */
-
 const authCheck = (req,res,next) =>{
     if(!req.user){
         // if user is not logged in
@@ -92,8 +91,7 @@ const authCheck = (req,res,next) =>{
     }
 };
 
-/**
- * Route to index page
+/** Route to index page
  * @name get/appointment
  * @param {object} user - Send the user object
  * @param {string} success - Store Success message
@@ -102,39 +100,37 @@ router.get('/',authCheck,(req,res)=>{
   res.render('appointment',{user:req.user, success: ''});
 });
 
-/**
- * Route to view appointment page
+/** Route to get view appointment page
  * @name get/view-appointment
- * @function gcalFunction
- * @memberof module:routers
- * @inner
- * @param {object} req.user.googleId - user googleID
+ * @param {object} req.user.googleId - User Google ID
  */
 router.get('/view-appointment',authCheck,(req,res)=>{
   gcalFunction.listEvent(req.user);
   getAppointmentList(res,req);
 });
 
+/** Routing to update appointment by ID
+ * @name get/view-appointment/update/id
+ * @param {object} req.params.id - User Event ID
+ */
 router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
   console.log('Passed ID: '+req.params.id);
   getAppointmentInfo(res, req);
 });
 
+/** Routing to post to view-appointment page.
+ * @name post/view-appointment
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
 router.post("/view-appointment", authCheck, (req, res)=>{
-  //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
-
-  // console.log("rb.startDate is: " + rb.startDate)
-  // console.log("rb.startTime is: " + rb.startTime)
 
   startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
   endDateObj = new Date(rb.endTime+ " " + rb.endDate).toISOString();
 
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
-
-    //  console.log(Date(startDateObj.getTimezoneOffset()));
-    // console.log(Date(endDateObj.getTimezoneOffset()));
 
   newData = {
     'mongoID': rb.mongoID,
@@ -157,10 +153,19 @@ router.post("/view-appointment", authCheck, (req, res)=>{
   run().then(getAppointmentList(res, req));
 })
 
+/** Routing to delete appointment on view-appointment page.
+ * @name delete/view-appointment
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
 router.delete("/view-appointment",authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
+  /** Function to run gCal functions asynchronously
+   * @async
+   * @function run
+   */
   async function run(){
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
@@ -168,19 +173,16 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
   run().then(getAppointmentList(res,req));
 });
 
-// router.get('/appt-success',authCheck,(req,res)=>{
-//   gcalFunction.listEvent(req.user.googleId);
-//   res.render('appt-success',{user:req.user});
-// });
-
+/** Routing to root page served on '/'.
+ * @name post/
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
 router.post("/", function(req, res){
   let rb = req.body;
 
   startDateObj = new Date(rb.startTime +" "+ rb.startDate);
   endDateObj = new Date(rb.endTime +" "+ rb.endDate);
-  
-  // console.log(Date(startDateObj.getTimezoneOffset()));
-  // console.log(Date(endDateObj.getTimezoneOffset()));
   
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
@@ -196,11 +198,17 @@ router.post("/", function(req, res){
     'attendees': rb.attendees,
     'reminders': rb.reminders
   }
+
   console.log(calendarData);
   gcalFunction.insEvent(calendarData, req.user);
   res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
 });
-  
+
+/** Function to get appointment list of authenticated user.
+ * @function getAppointmentList
+ * @param {object} res - Response
+ * @param {object} req - Request
+ */  
 function getAppointmentList(res,req){
   Event.find({userID: req.user.googleId}).exec(function(err, events) {   
     if (err) {
@@ -211,6 +219,11 @@ function getAppointmentList(res,req){
   });
 }
 
+/** Function to get appointment info of authenticated user.
+ * @function getAppointmentInfo
+ * @param {object} res - Response
+ * @param {object} req - Request
+ */  
 function getAppointmentInfo(res, req){
   console.log("Request params is: "+req.params.id);
   Event.find({userID: req.user.googleId}).exec(async function(err) {
@@ -239,13 +252,13 @@ module.exports = router;</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-lib_appointment-routes.html">lib/appointment-routes</a></li><li><a href="module-lib_connect.html">lib/connect</a></li><li><a href="module-lib_gcalendar.html">lib/gcalendar</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#appointmentRoutes">appointmentRoutes</a></li><li><a href="global.html#authRoutes">authRoutes</a></li><li><a href="global.html#cookieSession">cookieSession</a></li><li><a href="global.html#createError">createError</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#expressLayouts">expressLayouts</a></li><li><a href="global.html#indexRouter">indexRouter</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#menuRoutes">menuRoutes</a></li><li><a href="global.html#mongodb">mongodb</a></li><li><a href="global.html#passport">passport</a></li><li><a href="global.html#passportSetup">passportSetup</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#usersRouter">usersRouter</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-config_keys.html">config/keys</a></li><li><a href="module-config_passport-setup.html">config/passport-setup</a></li><li><a href="module-lib_appointment-routes.html">lib/appointment-routes</a></li><li><a href="module-lib_connect.html">lib/connect</a></li><li><a href="module-lib_gcalendar.html">lib/gcalendar</a></li></ul><h3>Global</h3><ul><li><a href="global.html#app">app</a></li><li><a href="global.html#appointmentRoutes">appointmentRoutes</a></li><li><a href="global.html#authRoutes">authRoutes</a></li><li><a href="global.html#cookieSession">cookieSession</a></li><li><a href="global.html#createError">createError</a></li><li><a href="global.html#express">express</a></li><li><a href="global.html#expressLayouts">expressLayouts</a></li><li><a href="global.html#indexRouter">indexRouter</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#logger">logger</a></li><li><a href="global.html#menuRoutes">menuRoutes</a></li><li><a href="global.html#mongodb">mongodb</a></li><li><a href="global.html#passport">passport</a></li><li><a href="global.html#passportSetup">passportSetup</a></li><li><a href="global.html#path">path</a></li><li><a href="global.html#usersRouter">usersRouter</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 25 2020 00:49:42 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sat Apr 25 2020 20:53:37 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
