@@ -247,7 +247,6 @@ input[type=button], input[type=submit], .btn{
 .logo{
   height: 100%;
   float: left;
-  padding: none;
 }
 
 #eventID, #mongoID {
