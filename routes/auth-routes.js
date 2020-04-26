@@ -16,6 +16,7 @@ const router = express.Router();
  * @requires passport
  */
 const passport = require('passport');
+const gcalFunction = require('../lib/gcalendar');
 
 /** Authenticate user log in
  * @name get/login
@@ -48,6 +49,7 @@ router.get('/google', passport.authenticate('google', {
  */
 router.get('/google/redirect',passport.authenticate('google'),(req,res)=>{
   // res.send('you have reached the call back URL!!!');
+  gcalFunction.getList(req.user);
   res.redirect('/menu');
 });
 

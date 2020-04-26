@@ -97,33 +97,33 @@ const authRoutes = require('./routes/auth-routes');
  */
 const appointmentRoutes = require('./routes/appointment-routes');
 
-/** @description Connects the application to MongoDB database. */
+/** Connects the application to MongoDB database. */
 mongodb.dbConnect();
 
-/** @description Setting up views, view engine, and layouts. */
+/** Setting up views, view engine, and layouts. */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 
-/** @description Manage cookie sessions. */
+/** Manage cookie sessions. */
 app.use(cookieSession({
-  maxAge:24 * 60 * 60 *1000,
-  keys:[keys.session.cookieKey]
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
 }));
 
-/** @description Initialise and configure passport. */
+/** Initialise and configure passport. */
 app.use(passport.initialize());
 app.use(passport.session());
 app.set(passportSetup);
 
-/** @description Configure morgan and express middleware. */
+/** Configure morgan and express middleware. */
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/** @description Establish proper page routings */
+/** Establish proper page routings */
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRoutes);
@@ -132,12 +132,12 @@ app.use('/appointment', appointmentRoutes);
 app.use('/appointment/appt-success', appointmentRoutes);
 app.use('/appointment/view-appointment', appointmentRoutes);
 
-/** @description Catch 404 error and forward to error handler. */
+/** Catch 404 error and forward to error handler. */
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-/** @description Error handler */
+/** Error handler */
 app.use(function(err, req, res) {
   /** Set locals, only providing error in development. */
   res.locals.message = err.message;

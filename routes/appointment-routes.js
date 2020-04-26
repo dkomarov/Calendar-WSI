@@ -68,17 +68,17 @@ const authCheck = (req,res,next) =>{
  * @param {object} user - Send the user object
  * @param {string} success - Store Success message
  */
-router.get('/',authCheck,(req,res)=>{  
-  res.render('appointment',{user:req.user, success: ''});
+router.get('/', authCheck, (req, res) => {
+  res.render('appointment', { user: req.user, success: '' });
 });
 
 /** Route to get view appointment page
  * @name get/view-appointment
  * @param {object} req.user.googleId - User Google ID
  */
-router.get('/view-appointment',authCheck,(req,res)=>{
+router.get('/view-appointment', authCheck, (req, res) => {
   gcalFunction.listEvent(req.user);
-  getAppointmentList(res,req);
+  getAppointmentList(res, req);
 });
 
 /** Routing to update appointment by ID
@@ -99,7 +99,7 @@ router.post("/view-appointment", authCheck, (req, res)=>{
   let rb = req.body;
 
   startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
-  endDateObj = new Date(rb.endTime+ " " + rb.endDate).toISOString();
+  endDateObj = new Date(rb.endTime + " " + rb.endDate).toISOString();
 
   console.log("startDateObj is: " + startDateObj);
   console.log("endDateObj is: " + endDateObj);
@@ -110,15 +110,15 @@ router.post("/view-appointment", authCheck, (req, res)=>{
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
-    'start' : startDateObj,
-    'end' : endDateObj,
+    'start': startDateObj,
+    'end': endDateObj,
     'attendees': rb.attendees,
     'reminders': rb.reminders
- }
+  }
 
- console.log("inside put route, newData is: %j", newData)
+  console.log("inside put route, newData is: %j", newData)
 
-  async function run(){
+  async function run() {
     gcalFunction.updateEvent(newData);
     gcalFunction.listEvent(req.user);
   }
@@ -142,7 +142,7 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
   }
-  run().then(getAppointmentList(res,req));
+  run().then(getAppointmentList(res, req));
 });
 
 /** Routing to root page served on '/'.
@@ -170,7 +170,6 @@ router.post("/", function(req, res){
     'attendees': rb.attendees,
     'reminders': rb.reminders
   }
-
   console.log(calendarData);
   gcalFunction.insEvent(calendarData, req.user);
   res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
@@ -215,3 +214,6 @@ function getAppointmentInfo(res, req){
 }
 
 module.exports = router;
+
+
+  
