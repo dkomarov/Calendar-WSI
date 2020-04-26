@@ -1,3 +1,7 @@
+/** Database connection test module.
+ * @module test/dbconnection-test
+ */
+
 const mocha = require('mocha');
 var mongoose = require('mongoose');
 

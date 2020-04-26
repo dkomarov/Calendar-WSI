@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: config/keys</title>
+    <title>JSDoc: Source: test/updateevent-test.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,414 +17,42 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: config/keys</h1>
+    <h1 class="page-title">Source: test/updateevent-test.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        
-            
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Google client ID/secret and cookie session key module.</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        
-            
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Google client ID/secret and cookie session key module.</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Update event test module.
+ * @module test/updateevent-test
+ */
 
-    
-
-    
+const assert = require('chai').assert;
+const gcalFunction = require('../lib/gcalendar');
 
-    
-
-    
-</article>
+const updatedData =  {
+  _id: '5e928d5da2f4db9e1a413205',
+  summary: 'event5updated',
+  location: 'loc-updated',
+  description: 'desc-updated',
+  start: '2020-05-15T02:00:00.000Z',
+  end: '2020-05-15T07:00:00.000Z',
+  recurrence: '0',
+  attendees: 'mailupdated@mail.co',
+  reminders: 'updated'
+};
 
-</section>
+describe('updateEvent()', function() {
+  it('should return successfully updated event', function(){
+    assert.isObject(gcalFunction.updateEvent(updatedData), 'object');
+  });
+});
+</code></pre>
+        </article>
+    </section>
 
 
 

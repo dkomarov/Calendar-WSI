@@ -1,3 +1,7 @@
+/** List event test module.
+ * @module test/listevent-test
+ */
+
 const assert = require('chai').assert;
 const gcalFunction = require('../lib/gcalendar');
 

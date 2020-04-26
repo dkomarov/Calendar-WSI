@@ -1,3 +1,7 @@
+/** Delete event test module.
+ * @module test/deleteevent-test
+ */
+
 const assert = require('chai').assert;
 const gcalFunction = require('../lib/gcalendar');
 

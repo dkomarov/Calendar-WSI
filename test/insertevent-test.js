@@ -1,6 +1,8 @@
+/** Insert event test module.
+ * @module test/insertevent-test
+ */
+
 const assert = require('chai').assert;
-// const assert = require('assert');
-/* global describe, it */
 
 const gcalFunction = require('../lib/gcalendar');
 

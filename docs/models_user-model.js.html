@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: config/keys</title>
+    <title>JSDoc: Source: models/user-model.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,414 +17,48 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: config/keys</h1>
+    <h1 class="page-title">Source: models/user-model.js</h1>
 
     
 
 
 
-
-<section>
-
-<header>
-    
-        
-            
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Google client ID/secret and cookie session key module.</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        
-            
-        
-            
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description"><p>Google client ID/secret and cookie session key module.</p></div>
-        
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="config_keys.js.html">config/keys.js</a>, <a href="config_keys.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** User model module for user data insertion to database.
+ * @module models/user-model
+ */
+'use strict';
 
-    
-
-    
+/** Require module for MongoDB connection.
+ * @requires mongoose
+ */
+const mongoose = require('mongoose'); 
 
-    
+/** Establishing MongoDB collection schema.
+ * @const {object} Schema
+ */
+const Schema = mongoose.Schema;
 
-    
+/** User data schema object.
+ * @const {object} userSchema
+ */
+const userSchema = new Schema({
+    userName: String,
+    googleId: String,
+    googleToken: String,
+    googleRefresh: String
+});
 
-    
-</article>
+/** Inserting authorized user data to user collection schema.
+ * @const {object} User
+ */
+const User = mongoose.model('user', userSchema);
 
-</section>
+module.exports = User;</code></pre>
+        </article>
+    </section>
 
 
 

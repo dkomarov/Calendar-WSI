@@ -1,7 +1,6 @@
 /** Passport.js configuration setup module.
  * @module config/passport-setup
  */
-
 'use strict';
 
 /** Require module for passport js.

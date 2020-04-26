@@ -1,5 +1,5 @@
 /** Appointment routes module.
- * @module lib/appointment-routes
+ * @module routes/appointment-routes
  */
 
 /** Require module for express lightweight middleware.
