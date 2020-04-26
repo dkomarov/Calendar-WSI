@@ -4,10 +4,12 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-// user schema to store the user information in the mongoDB
+
 const userSchema = new Schema({
-  userName: String,
-  googleId: String,
+    userName: String,
+    googleId: String,
+    googleToken: String,
+    googleRefresh: String
 });
 
 const User = mongoose.model('user', userSchema);
