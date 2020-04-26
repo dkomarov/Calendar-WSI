@@ -1,0 +1,16 @@
+ {
+    "source": {
+      "include": ["./"],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(node_modules/|docs)"
+    },
+    "plugins": ["plugins/markdown" , "jsdoc-route-plugin"],
+    "opts": {
+        "encoding": "utf8",
+        "readme": "./readme.md",
+        "destination": "docs/",
+        "recurse": true,
+        "verbose": true,
+        "template": "node_modules/better-docs/"
+    }
+  }
