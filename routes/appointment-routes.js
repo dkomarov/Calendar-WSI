@@ -68,7 +68,9 @@ router.get('/view-appointment/update/:id', authCheck, (req, res) => {
   getAppointmentInfo(res, req);
 });
 
-router.post("/view-appointment", authCheck, (req, res) => {
+//router.post("/view-appointment", authCheck, (req, res) => {
+//router.post('/view-appointment/update/:id', authCheck, (req, res) => {
+router.post('/view-appointment/update/:id', authCheck, (req, res) => {
   //console.log("req.body in UPDATE is: %j" ,req.body)
   let rb = req.body;
 
@@ -99,11 +101,22 @@ router.post("/view-appointment", authCheck, (req, res) => {
 
   console.log("inside put route, newData is: %j", newData)
 
+
   async function run() {
     gcalFunction.updateEvent(newData);
     gcalFunction.listEvent(req.user);
-  }
-  run().then(getAppointmentList(res, req));
+    Event.find({ _id: req.params.id }).exec(async function (err, event) {
+      if (err) {
+        console.log("Unable to find event id.");
+      } else {
+        console.log("Event id found: " + event);
+        res.send({ "event": event })
+      }
+  });
+  getAppointmentList(res, req);
+}
+  run().then(res.redirect("/appointment/view-appointment"))
+  //.then(getAppointmentList(res, req)); 
 })
 
 router.delete("/view-appointment", authCheck, (req, res) => {
@@ -155,7 +168,7 @@ function getAppointmentList(res, req) {
     if (err) {
       throw err;
     } else {
-      res.render('view-appointment', { "events": events })
+      res.render('view-appointment', { "events": events }) //, success: ''
     }
   });
 }
