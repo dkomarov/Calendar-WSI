@@ -38,7 +38,7 @@
     <% event.forEach(function (eve) { %>
     <%count++%>
     <h1>Update Appointment <%= eve.summary %></h1>
-    <form method="post" action="/appointment/view-appointment" id="formVal">
+    <form method="post" action="/appointment/view-appointment/update/<%= eve._id%>" id="formVal">
       <table id="form">
         <tr id="mongoID">
           <td>mongoid:</td>
@@ -91,7 +91,7 @@
       </table>
       <br>
       <span id="error"></span>
-      <input type="button" value="Update" id="form-btn"/>
+      <input type="button" value="Update" id="form-btn" onclick="update('<%= eve%>);"/>
     </form>
     <% }) %>
   </section>

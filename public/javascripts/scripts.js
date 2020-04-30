@@ -102,10 +102,10 @@ function delData(eventID, eventSummary) {
   }
 }
 
-// function update(eventID) {
-//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment/update/'+eventID+"?_method=PUT", 
-//     data: {ue:eventID},
-//     type: "PUT",
+// function update(event) {
+//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment',
+//     data: {ue:event},
+//     type: "POST",
 //     success:function(res){
-//   }});
+//   }}).then(() => location.reload());
 // }
