@@ -8,6 +8,7 @@
 var app = require('../app');
 var debug = require('debug')('appointmentsystem:server');
 var http = require('http');
+var socket = require('socket.io')
 
 /**
  * get port from environment and store in Express.
@@ -22,6 +23,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+var io = socket(server);
 
 /**
  * listen on provided port, on all network interfaces.
@@ -36,6 +38,11 @@ try {
 
 server.on('error', onError);
 server.on('listening', onListening);
+
+// establish socket connection on back-end
+io.on('connection', function(socket){
+  console.log('socket connection established.', socket.id)
+});
 
 /**
  * Normalize a port into a number, string, or false.
