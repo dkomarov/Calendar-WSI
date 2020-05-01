@@ -1,4 +1,5 @@
-//validates the appointment form before proccessing further
+// establish socket connection on front-end
+var socket = io.connect('http://localhost:3000');
 
 window.addEventListener('DOMContentLoaded', function () {
   document.getElementById('form-btn').addEventListener('click', function () {
@@ -8,6 +9,7 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+//validates the appointment form before proccessing further
 function formValidation() {
 
   var error = document.getElementById('error');
