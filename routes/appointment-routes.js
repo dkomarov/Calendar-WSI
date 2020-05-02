@@ -26,6 +26,7 @@ const gcalFunction = require('../lib/gcalendar');
  * @requires event_model
  */
 const Event = require('../models/event_model');
+var success = 0;
 
 /** Calendar data object variable.
  * @var {object} calendarData
@@ -81,6 +82,50 @@ router.get('/view-appointment', authCheck, (req, res) => {
   getAppointmentList(res, req);
 });
 
+router.get('/view-appointment/update/:id', authCheck, (req, res) => {
+  console.log('Passed ID: ' + req.params.id);
+  getAppointmentInfo(res, req, success);
+});
+
+/** Routing to root page served on '/'.
+ * @name post/
+ * @param {object} req - Call back request
+ * @param {object} res - Call back response
+ */
+router.post('/', function (req, res) {
+  let rb = req.body;
+
+  startDateObj = new Date(rb.startTime + " " + rb.startDate);
+  endDateObj = new Date(rb.endTime + " " + rb.endDate);
+
+  // console.log(Date(startDateObj.getTimezoneOffset()));
+  // console.log(Date(endDateObj.getTimezoneOffset()));
+
+  console.log("startDateObj is: " + startDateObj);
+  console.log("endDateObj is: " + endDateObj);
+
+  calendarData = {
+    _id: mongoose.Types.ObjectId(),
+    'summary': rb.summary,
+    'location': rb.location,
+    'description': rb.description,
+    'start': startDateObj,
+    'end': endDateObj,
+    'recurrence': rb.recurrence,
+    'attendees': rb.attendees,
+    'reminders': rb.reminders
+  }
+  console.log(calendarData);
+
+  async function run() {
+    gcalFunction.insEvent(calendarData, req.user);
+    gcalFunction.listEvent(req.user);
+  }
+  
+  run().then(res.render('appointment', { user: req.user, success: "Appointment booked successfully!" }));
+  
+});
+
 /** Routing to update appointment by ID
  * @name get/view-appointment/update/id
  * @param {object} req.params.id - User Event ID
@@ -95,7 +140,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.post("/view-appointment", authCheck, (req, res)=>{
+router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
   let rb = req.body;
 
   startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
@@ -118,12 +163,25 @@ router.post("/view-appointment", authCheck, (req, res)=>{
 
   console.log("inside put route, newData is: %j", newData)
 
+
   async function run() {
-    gcalFunction.updateEvent(newData);
+    await gcalFunction.updateEvent(newData)
     gcalFunction.listEvent(req.user);
   }
-  run().then(getAppointmentList(res, req));
-})
+
+  success = 1;
+  run().then(getAppointmentInfo(res, req, success))
+  success = 0;
+  //run().then(res.render('update', { user: req.user, "event": event, success: "Update successful!"}));
+  
+  //getAppointmentList(res, req);
+  //run().then(getAppointmentList(res, req));
+  //run().then(res.redirect("/appointment/view-appointment"))
+
+
+});
+
+  
 
 /** Routing to delete appointment on view-appointment page.
  * @name delete/view-appointment
@@ -142,37 +200,8 @@ router.delete("/view-appointment",authCheck,(req,res)=>{
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
   }
-  run().then(getAppointmentList(res, req));
-});
-
-/** Routing to root page served on '/'.
- * @name post/
- * @param {object} req - Call back request
- * @param {object} res - Call back response
- */
-router.post("/", function(req, res){
-  let rb = req.body;
-
-  startDateObj = new Date(rb.startTime +" "+ rb.startDate);
-  endDateObj = new Date(rb.endTime +" "+ rb.endDate);
   
-  console.log("startDateObj is: " + startDateObj);
-  console.log("endDateObj is: " + endDateObj);
-
-  calendarData = {
-    _id: mongoose.Types.ObjectId(),
-    'summary': rb.summary,
-    'location': rb.location,
-    'description': rb.description,
-    'start': startDateObj,
-    'end': endDateObj,
-    'recurrence': rb.recurrence,
-    'attendees': rb.attendees,
-    'reminders': rb.reminders
-  }
-  console.log(calendarData);
-  gcalFunction.insEvent(calendarData, req.user);
-  res.render('appointment',{user:req.user, success: "Appointment booked successfully!"});
+  run().then(getAppointmentList(res, req));
 });
 
 /** Function to get appointment list of authenticated user.
@@ -195,7 +224,7 @@ function getAppointmentList(res,req){
  * @param {object} res - Response
  * @param {object} req - Request
  */  
-function getAppointmentInfo(res, req){
+function getAppointmentInfo(res, req, success){
   console.log("Request params is: "+req.params.id);
   Event.find({userID: req.user.googleId}).exec(async function(err) {
     if(err){
@@ -205,15 +234,19 @@ function getAppointmentInfo(res, req){
         if(err){
           console.log("Unable to find event id.");
         } else {
-          console.log("Event id found: "+event);
-          res.render('update', {"event": event})
+          console.log("Event id found: " + event);
+
+          if (success == 0) {
+            res.render('update', { user: req.user, "event": event, success: '' })
+          }
+          else if (success == 1) {
+            res.render('update', { user: req.user, "event": event, success: 'Update successful!' })
+          }
         }
       })
     }
   });
 }
 
+
 module.exports = router;
-
-
-  
