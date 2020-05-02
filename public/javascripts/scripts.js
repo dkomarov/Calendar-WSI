@@ -1,6 +1,3 @@
-// establish socket connection on front-end
-var socket = io.connect('http://localhost:3000');
-
 window.addEventListener('DOMContentLoaded', function () {
   document.getElementById('form-btn').addEventListener('click', function () {
     if (formValidation() == true) {
