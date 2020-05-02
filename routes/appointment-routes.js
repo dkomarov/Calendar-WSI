@@ -10,6 +10,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const gcalFunction = require('../lib/gcalendar');
 const Event = require('../models/event_model');
+var eventInfo;
 var calendarData = {};
 var startDateObj;
 var endDateObj;
@@ -110,14 +111,21 @@ router.post('/view-appointment/update/:id', authCheck, (req, res) => {
         console.log("Unable to find event id.");
       } else {
         console.log("Event id found: " + event);
+        eventInfo = event;
         res.send({ "event": event })
       }
-  });
-  getAppointmentList(res, req);
-}
-  run().then(res.redirect("/appointment/view-appointment"))
-  //.then(getAppointmentList(res, req)); 
-})
+    })
+  }
+
+  //getAppointmentList(res, req);
+  run().then(res.render('update', { user: req.user, event: eventInfo, success: "Update successful!" }));
+
+   //run().then(res.redirect("/appointment/view-appointment"))
+  //.then(getAppointmentList(res, req));
+
+});
+
+  
 
 router.delete("/view-appointment", authCheck, (req, res) => {
   console.log("req.body in DELETE is: %j", req.body)
@@ -165,11 +173,11 @@ router.post("/", function (req, res) {
 });
 
 function getAppointmentList(res, req) {
-  Event.find({ userID: req.user.googleId }).exec(function (err, events) {
+  Event.find({ userID: req.user.googleId }).exec(async function (err, events) {
     if (err) {
       throw err;
     } else {
-      res.render('view-appointment', { "events": events }) //, success: ''
+      res.render('view-appointment', { "events": events})
     }
   });
 }
@@ -185,7 +193,7 @@ function getAppointmentInfo(res, req) {
           console.log("Unable to find event id.");
         } else {
           console.log("Event id found: " + event);
-          res.render('update', { "event": event })
+          res.render('update', { "event": event, success: '' })
         }
       })
     }

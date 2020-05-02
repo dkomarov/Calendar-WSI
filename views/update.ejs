@@ -33,6 +33,12 @@
         <li><a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a></li>
       </ul>
   </nav>
+
+  <% if(success != ''){%>
+    <section class="alert">
+      <strong><%= success%></strong>
+    </section>
+    <%}%>
   <section id="appointmentForm">
     <%var count = 0%>
     <% event.forEach(function (eve) { %>
@@ -91,7 +97,7 @@
       </table>
       <br>
       <span id="error"></span>
-      <input type="button" value="Update" id="form-btn" onclick="update('<%= eve%>);"/>
+      <input type="button" value="Update" id="update-btn" /> 
     </form>
     <% }) %>
   </section>
