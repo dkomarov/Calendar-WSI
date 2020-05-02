@@ -1,3 +1,9 @@
+/** Javascript module for frontend functionality.
+ * @module public/javascripts/scripts
+ */
+
+/** Validates the appointment form before proccessing further. */
+
 window.addEventListener('DOMContentLoaded', function () {
   document.getElementById('form-btn').addEventListener('click', function () {
     if (formValidation() == true) {
@@ -6,8 +12,11 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-//validates the appointment form before proccessing further
-function formValidation() {
+/** Form validation function to properly validate form data.
+ * @function formValidation
+ * @return {boolean} true
+ */
+function formValidation(){
 
   var error = document.getElementById('error');
   var summary = document.getElementById('summary');
@@ -91,25 +100,19 @@ async function del(eventID, eventSummary) {
   //window.location.href = "/appointment/view-appointment";
 }
 
-function delData(eventID, eventSummary) {
-  if (confirm("Confirm do you want to delete " + eventSummary + " event?")) {
-    $.ajax({
-      url: 'http://localhost:3000/appointment/view-appointment',
-      data: { de: eventID },
-      type: "DELETE",
-      success: function (res) {
-        window.location.href='/menu'
-       // window.location.href='/appointment/view-appointment'
-      //  res.redirect('/appointment/view-appointment');
-      }
-    });
+/** Javascript delete function to verify deletion of event.
+ * @function del
+ * @param {object} eventID - Event ID
+ * @param {object} eventSummary - Summary of Event
+ */
+function del(eventID,eventSummary){
+  if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
+    $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
+    data: {de:eventID},
+    type: "DELETE",
+    success:function(res){
+      window.location.href='/menu'
+      //window.location.href = "/appointment/view-appointment";
+    }});
   }
 }
-
-// function update(event) {
-//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment',
-//     data: {ue:event},
-//     type: "POST",
-//     success:function(res){
-//   }}).then(() => location.reload());
-// }
