@@ -7,7 +7,7 @@
 
 var app = require('../app');
 var debug = require('debug')('appointmentsystem:server');
-var http = require('http');
+var socket = require('socket.io')
 
 /**
  * get port from environment and store in Express.
@@ -28,6 +28,22 @@ var server = app.listen(port, function(){
 
 server.on('error', onError);
 server.on('listening', onListening);
+
+var io = socket(server);
+
+// establish socket connection on back-end
+io.on('connection', (socket) => {
+  console.log('socket connected', socket.id)
+
+  socket.on('delete', function(data) {
+    io.sockets.emit('delete', data);
+  });
+
+  socket.on('update', function(data) {
+    io.sockets.emit('update', data);
+  });
+});
+
 
 /**
  * Normalize a port into a number, string, or false.
@@ -88,3 +104,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+module.exports = io;
