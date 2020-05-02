@@ -99,6 +99,7 @@ function delData(eventID, eventSummary) {
       data: { de: eventID },
       type: "DELETE",
       success: function (res) {
+       window.location.href='/menu'
       }
     });
   }

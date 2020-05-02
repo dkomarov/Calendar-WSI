@@ -127,6 +127,7 @@ router.delete("/view-appointment", authCheck, (req, res) => {
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
   }
+  
   run().then(getAppointmentList(res, req));
 });
 
