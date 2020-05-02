@@ -89,7 +89,9 @@ function formValidation() {
 
 async function del(eventID, eventSummary) {
   await delData(eventID, eventSummary);
+  //.then(window.location.href='/appointment/view-appointment');
   window.location = "/appointment/view-appointment";
+  //window.location.href = "/appointment/view-appointment";
 }
 
 function delData(eventID, eventSummary) {
@@ -99,7 +101,9 @@ function delData(eventID, eventSummary) {
       data: { de: eventID },
       type: "DELETE",
       success: function (res) {
-       window.location.href='/menu'
+        window.location.href='/menu'
+       // window.location.href='/appointment/view-appointment'
+      //  res.redirect('/appointment/view-appointment');
       }
     });
   }
