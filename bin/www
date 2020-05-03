@@ -17,23 +17,15 @@ var port = normalizePort(process.env.PORT || '3000');
 
 app.set('port', port);
 
-/**
- * create HTTP server.
- */
-
-var server = http.createServer(app);
 var io = socket(server);
 
 /**
  * listen on provided port, on all network interfaces.
  */
-
-try {
-  server.listen(port);
+//var server = http.createServer(app);
+var server = app.listen(port, function(){
   console.log('\nServer is running. To connect, go to: http://localhost:3000\n');
-} catch (err) {
-  console.log(err);
-}
+})
 
 server.on('error', onError);
 server.on('listening', onListening);
