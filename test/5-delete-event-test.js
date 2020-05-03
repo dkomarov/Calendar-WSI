@@ -21,7 +21,7 @@ var eventID = '5e928d5da2f4db9e1a413205';
  * @name describe
  */
 describe('deleteEvent()', function() {
-  it('should return successfully deleted eventID', function(){
-    assert.isObject(gcalFunction.deleteEvent(eventID), 'object');
+  it('should return a successfully deleted event ID', function(){
+    assert.isString(gcalFunction.deleteEvent(eventID), 'string');
   });
 });

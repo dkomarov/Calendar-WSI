@@ -20,9 +20,9 @@ const updatedData =  {
   summary: 'event5updated',
   location: 'loc-updated',
   description: 'desc-updated',
-  start: '2020-05-15T02:00:00.000Z',
-  end: '2020-05-15T07:00:00.000Z',
-  recurrence: '0',
+  start: { 'dateTime': '2020-05-15T02:00:00.000Z', 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone },
+  end: { 'dateTime': '2020-05-15T07:00:00.000Z', 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone },
+  recurrence: '4',
   attendees: 'mailupdated@mail.co',
   reminders: 'updated'
 };
@@ -31,7 +31,7 @@ const updatedData =  {
  * @name describe
  */
 describe('updateEvent()', function() {
-  it('should return successfully updated event', function(){
+  it('should return a successfully updated event', function(){
     assert.isObject(gcalFunction.updateEvent(updatedData), 'object');
   });
 });

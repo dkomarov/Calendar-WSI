@@ -15,13 +15,13 @@ const gcalFunction = require('../lib/gcalendar');
 /** Google ID variable string.
  * @var {string} googleID
  */
-var googleID = "";
+var googleID = "100122958946797179078"; // id of ITMD567 account
 
 /** Mocha describe method for function testing 
  * @name describe
  */
 describe('listEvents()', function() {
   it('should return list of events', function(){
-    assert.isObject(gcalFunction.listEvent(googleID), 'object');
+    assert.isString(gcalFunction.listEvent(googleID), 'string');
   });
 });

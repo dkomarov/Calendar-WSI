@@ -20,8 +20,8 @@ const calendarData =  {
   summary: 'event5',
   location: 'loc',
   description: 'desc',
-  start: '2020-04-12T06:00:00.000Z',
-  end: '2020-04-12T07:00:00.000Z',
+  start: { 'dateTime': '2020-04-12T06:00:00.000Z', 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone },
+  end: { 'dateTime': '2020-04-12T07:00:00.000Z', 'timeZone': Intl.DateTimeFormat().resolvedOptions().timeZone },
   recurrence: '3',
   attendees: 'mail@mail.co',
   reminders: 'none'

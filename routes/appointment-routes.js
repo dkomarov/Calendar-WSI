@@ -26,6 +26,10 @@ const gcalFunction = require('../lib/gcalendar');
  * @requires event_model
  */
 const Event = require('../models/event_model');
+
+/** Calendar data object variable.
+ * @var {number} success
+ */
 var success = 0;
 
 /** Calendar data object variable.
@@ -78,7 +82,8 @@ router.get('/', authCheck, (req, res) => {
  * @param {object} req.user.googleId - User Google ID
  */
 router.get('/view-appointment', authCheck, (req, res) => {
-  gcalFunction.listEvent(req.user);
+  x = gcalFunction.listEvent(req.user);
+  console.log("x is", x)
   getAppointmentList(res, req);
 });
 
