@@ -109,7 +109,7 @@ function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
     $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
     data: {de:eventID},
-    type: "DELETE",
+    type: "POST",
     success:function(res){
       window.location.href='/menu'
       //window.location.href = "/appointment/view-appointment";
