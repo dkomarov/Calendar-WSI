@@ -183,7 +183,7 @@ label #sign-one, label #sign-two{
   margin-top: 20px;
 }
 
-input[type=text], input[type=number], input[type=date], input[type=time] {
+input[type=text], input[type=number], input[type=date], input[type=time],input[type=email]{
   border: 2px solid rgb(46, 49, 49);
   border-radius: 4px;
   padding: 5px;
@@ -268,7 +268,9 @@ input[type=button], input[type=submit], .btn{
   animation-delay: 1s;
 }
 
-
+.red-alert {
+  background-color:red; /* Red */  
+}
 @-webkit-keyframes seconds {
   0% {
     opacity: 1;
