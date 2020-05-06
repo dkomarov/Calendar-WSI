@@ -1,2 +1,2 @@
-# project-3-beta
-Beta Phase for semester project 567.
+# project-4-release
+Release Phase for semester project 567.
