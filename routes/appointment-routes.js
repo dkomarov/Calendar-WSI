@@ -129,7 +129,7 @@ router.post('/', function (req, res) {
   }
   
   run().then(()=>{
-    if(flag == 1){
+    if(flag != 0){
       res.render('appointment', { user: req.user, success: "success" })
     }else{
       res.render('appointment', { user: req.user, success: "fail" })
