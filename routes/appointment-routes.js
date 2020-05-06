@@ -82,8 +82,7 @@ router.get('/', authCheck, (req, res) => {
  * @param {object} req.user.googleId - User Google ID
  */
 router.get('/view-appointment', authCheck, (req, res) => {
-  x = gcalFunction.listEvent(req.user);
-  console.log("x is", x)
+  gcalFunction.listEvent(req.user);
   getAppointmentList(res, req);
 });
 
