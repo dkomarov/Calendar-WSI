@@ -105,7 +105,7 @@ async function del(eventID, eventSummary) {
  * @param {object} eventID - Event ID
  * @param {object} eventSummary - Summary of Event
  */
-function del(eventID,eventSummary){
+function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
     $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
     data: {de:eventID},
