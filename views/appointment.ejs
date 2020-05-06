@@ -13,11 +13,15 @@
   </ul>
 </nav>
 
-<% if(success != ''){%>
+<% if(success == 'success'){%>
 <section class="alert">
-  <strong><%= success%></strong>
+  <strong>Appointment booked successfully!</strong>
 </section>
-<%}%>
+<%}else if(success == 'fail'){%>
+<section class="alert red-alert">
+  <strong>Error while creating Event</strong>
+</section>
+  <%}%>
 <section id="appointmentForm">
   <h1>Welcome, <%=user.userName%></h1>
 <h1>Appointment Form</h1>
