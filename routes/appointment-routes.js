@@ -82,8 +82,7 @@ router.get('/', authCheck, (req, res) => {
  * @param {object} req.user.googleId - User Google ID
  */
 router.get('/view-appointment', authCheck, (req, res) => {
-  x = gcalFunction.listEvent(req.user);
-  console.log("x is", x)
+  gcalFunction.listEvent(req.user);
   getAppointmentList(res, req);
 });
 
@@ -193,7 +192,7 @@ router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.delete("/view-appointment",authCheck,(req,res)=>{
+router.post("/view-appointment",authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 

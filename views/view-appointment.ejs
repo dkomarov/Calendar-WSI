@@ -37,7 +37,7 @@
         <td><%= eve.start%></td>
         <td><%= eve.end%></td>
         <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><input type="submit" class="btn"value="Edit" /></a></td>
-        <td><input type="button" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete" />
+        <td><input type="submit" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete" />
         </td>
       </tr>
       <% }) %>
@@ -48,6 +48,5 @@
 <script rel="javascripts" src="/javascripts/scripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://kit.fontawesome.com/a05bed8e85.js" crossorigin="anonymous"></script>
