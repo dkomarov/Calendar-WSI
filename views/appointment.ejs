@@ -13,55 +13,49 @@
   </ul>
 </nav>
 
-<% if(success != ''){%>
+<% if(success == 'success'){%>
 <section class="alert">
-  <strong><%= success%></strong>
+  <strong>Appointment booked successfully!</strong>
 </section>
-<%}%>
+<%}else if(success == 'fail'){%>
+<section class="alert red-alert">
+  <strong>Error while creating Event</strong>
+</section>
+  <%}%>
 <section id="appointmentForm">
   <h1>Welcome, <%=user.userName%></h1>
-<h1>Appointment Form</h1>
-<form method="post" action="/appointment" id="formVal">
+  <form method="post" action="/appointment" id="formVal">
+  <h3>Appointment Form</h3>
   <table id="form">
     <tr>
-      <td>Summary:</td>
-      <td><input type="text" id="summary" name="summary"></td>
+      <td><input type="text" id="summary" name="summary" placeholder="Event Summary"></td>
     </tr>
     <tr>
-      <td>Location:</td>
-      <td><input type="text" id="location" name="location"></td>
+      <td><input type="text" id="location" name="location" placeholder="Location"></td>
     </tr>
     <tr>
-      <td>Description:</td>
-      <td><input type="text" id="description" name="description"></td>
+      <td><input type="text" id="description" name="description" placeholder="Description"></td>
     </tr>
     <tr>
-      <td>Start Date:</td>
-      <td><input type="date" id="startDate" name="startDate"></td>
+      <td><input type="text" id="startDate" name="startDate" placeholder="Start Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
     </tr>
     <tr>
-      <td>End Date:</td>
-      <td><input type="date" id="endDate" name="endDate"></td>
+      <td><input type="text" id="startTime" name="startTime" placeholder="Start Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
     </tr>
     <tr>
-      <td>Start Time:</td>
-      <td><input type="time" id="startTime" name="startTime"></td>
+      <td><input type="text" id="endDate" name="endDate" placeholder="End Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
     </tr>
     <tr>
-      <td>End Time</td>
-      <td><input type="time" id="endTime" name="endTime"></td>
+      <td><input type="text" id="endTime" name="endTime" placeholder="End Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
     </tr>
     <tr>
-      <td>Recurrence: (#)</td>
-      <td><input type="number" id="recurrence" name="recurrence"></td>
+      <td><input type="number" id="recurrence" name="recurrence" placeholder="Recurrence: (#)"></td>
     </tr>
     <tr>
-      <td>Attendee Email(s):</td>
-      <td><input type="text" id="attendees" name="attendees"></td>
+      <td><input type="email" id="attendees" name="attendees" multiple placeholder="Attendee Email(s): xyz@gmail.com, abc@gmail.com"></td>
     </tr>
     <tr>
-      <td>Reminders:</td>
-      <td><input type="text" id="reminders" name="reminders"></td>
+      <td><input type="text" id="reminders" name="reminders" placeholder="Reminder"></td>
     </tr>
   </table>
   <br>

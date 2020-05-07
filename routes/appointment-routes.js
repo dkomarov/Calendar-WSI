@@ -52,6 +52,8 @@ var endDateObj;
  */
 var newData = {};
 
+var flag;
+
 /** Authentication check to see if the user is already logged in
  * @function authCheck
  * @param {object} req - The request object 
@@ -122,11 +124,17 @@ router.post('/', function (req, res) {
   console.log(calendarData);
 
   async function run() {
-    gcalFunction.insEvent(calendarData, req.user);
+    flag = gcalFunction.insEvent(calendarData, req.user);
     gcalFunction.listEvent(req.user);
   }
   
-  run().then(res.render('appointment', { user: req.user, success: "Appointment booked successfully!" }));
+  run().then(()=>{
+    if(flag != 0){
+      res.render('appointment', { user: req.user, success: "success" })
+    }else{
+      res.render('appointment', { user: req.user, success: "fail" })
+    }
+  });
   
 });
 
