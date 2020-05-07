@@ -2,18 +2,18 @@ sudo: false
 
 language: node_js
 node_js:
-	- node
+- node
 cache: npm
 
 install:
-	- npm ci
+- npm ci
 
 script:
-	- npm test
+- npm test
 
 deploy:
-	provider: heroku
-	skip-cleanup: true
-	github-token: $GITHUB_TOKEN
-	on:
-		branch: master
+provider: heroku
+skip-cleanup: true
+github-token: $GITHUB_TOKEN
+on:
+branch: master
