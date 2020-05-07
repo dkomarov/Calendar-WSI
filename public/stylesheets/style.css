@@ -310,7 +310,22 @@ input[type=button], input[type=submit], .btn{
 }
 
 .footer .footer-left{
-	width: 40%;
+	width: 35%;
+}
+
+.footer .footer-center{
+	width: 35%;
+}
+
+.footer h3{
+  color:  rgb(30, 139, 195);
+	font: normal 20px 'Lucida Grande';
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.footer h3 span{
+	color:  #ffffff;
 }
 
 .footer .footer-name{
@@ -319,6 +334,33 @@ input[type=button], input[type=submit], .btn{
 	font-weight: normal;
 	margin: 0;
 }
+
+.footer .footer-center i{
+	background-color:  #33383b;
+	color: #ffffff;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	vertical-align: middle;
+}
+
+.footer .footer-center p{
+	display: inline-block;
+	color: #ffffff;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
 
 .alert {
   margin: 10px auto;
