@@ -14,5 +14,6 @@ script:
 deploy:
 	provider: heroku
 	skip-cleanup: true
+	github-token: $GITHUB_TOKEN
 	on:
 		branch: dk
