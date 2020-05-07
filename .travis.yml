@@ -8,7 +8,7 @@ cache: npm
 install:
 - npm install cl
 - npm install mocha
--npm install chai
+- npm install chai
 
 
 script:
