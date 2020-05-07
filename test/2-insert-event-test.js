@@ -12,6 +12,9 @@ const assert = require('chai').assert;
  */
 const gcalFunction = require('../lib/gcalendar');
 
+const mongoose = require('mongoose');
+
+const User = require('../models/user-model');
 /** Calendar data object.
  * @const {object} calendarData
  */
@@ -27,11 +30,16 @@ const calendarData =  {
   reminders: 'none'
 };
 
+User.findOne({
+  googleId: "100122958946797179078"
+}).then((currentUser) => {
+    User = currentUser;
+});
 /** Mocha describe method for function testing 
  * @name describe
  */
 describe('insertEvent()', function() {
   it('should return an inserted event object', function(){
-    assert.isObject(gcalFunction.insEvent(calendarData), 'object');
+    assert.isObject(gcalFunction.insEvent(calendarData, User), 'object');
   });
 });

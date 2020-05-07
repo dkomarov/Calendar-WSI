@@ -6,7 +6,8 @@ node_js:
 cache: npm
 
 install:
-- npm ci
+- npm install cl
+
 
 script:
 - npm test
@@ -16,4 +17,4 @@ provider: heroku
 skip-cleanup: true
 github-token: $GITHUB_TOKEN
 on:
-branch: dk
+branch: master

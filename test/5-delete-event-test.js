@@ -12,6 +12,17 @@ const assert = require('chai').assert;
  */
 const gcalFunction = require('../lib/gcalendar');
 
+
+const mongoose = require('mongoose');
+
+const User = require('../models/user-model');
+
+User.findOne({
+  googleId: "100122958946797179078"
+}).then((currentUser) => {
+    User = currentUser;
+});
+
 /** Event ID variable string.
  * @var {string} eventID
  */
@@ -22,6 +33,6 @@ var eventID = '5e928d5da2f4db9e1a413205';
  */
 describe('deleteEvent()', function() {
   it('should return a successfully deleted event ID', function(){
-    assert.isString(gcalFunction.deleteEvent(eventID), 'string');
+    assert.isString(gcalFunction.deleteEvent(eventID, User), 'string');
   });
 });
