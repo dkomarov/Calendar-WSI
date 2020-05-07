@@ -187,7 +187,8 @@ label #sign-one, label #sign-two{
 }
 
 #appointmentForm h1{
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  font-size: 22px;
 }
 
 #formVal{
@@ -249,6 +250,10 @@ input[type=button], input[type=submit], .btn{
   margin-top: 20px;
 }
 
+.appointment-list h1{
+  font-size: 22px;
+}
+
 .table-css {
   border: 1px solid #ccc;
   width: 80%;
@@ -297,7 +302,7 @@ input[type=button], input[type=submit], .btn{
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-  padding: 55px 50px;
+  padding: 50px 50px;
   margin-top: 80px;
   bottom: 0;
 }
@@ -347,6 +352,12 @@ input[type=button], input[type=submit], .btn{
 	vertical-align: middle;
 }
 
+.footer .footer-center i.fa-envelope{
+	font-size: 16px;
+  line-height: 38px;
+  margin-top: 10px;
+}
+
 .footer .footer-center p{
 	display: inline-block;
 	color: #ffffff;
@@ -361,6 +372,15 @@ input[type=button], input[type=submit], .btn{
 	line-height:2;
 }
 
+.footer .footer-center p a{
+	color:  rgb(30, 139, 195);
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-center p a{
+	color:  rgb(30, 139, 195);
+	text-decoration: none;;
+}
 
 .alert {
   margin: 10px auto;
