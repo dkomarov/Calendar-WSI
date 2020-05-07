@@ -174,20 +174,48 @@ label #sign-one, label #sign-two{
 #appointmentForm{
   text-align: center;
   display: block;
-  margin-top: 20px;
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+#appointmentForm h1{
+  margin-bottom: 20px;
+}
+
+#formVal{
+  text-align: center;
+  font-size: 14px;
+  background: #F9F9F9;
+  padding: 25px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  position: relative;
 }
 
 #form{
-  text-align: left;
-  font-size: 14px;
-  margin-top: 20px;
+  width: 100%;
 }
 
+#form td{
+  padding-right: 15px;
+}
+
+#formVal h3 {
+  text-align: center;
+  display: block;
+  font-size: 25px;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+
 input[type=text], input[type=number], input[type=date], input[type=time],input[type=email]{
-  border: 2px solid rgb(46, 49, 49);
-  border-radius: 4px;
-  padding: 5px;
+  border: 1.5px solid rgb(46, 49, 49);
+  border-radius: 3px;
+  padding: 8px;
   width: 100%;
+  margin-bottom: 7px;
+  min-width: 100%;
 }
 
 input[type=button], input[type=submit], .btn{
@@ -196,11 +224,11 @@ input[type=button], input[type=submit], .btn{
   color: white;
   padding: 10px 32px;
   text-decoration: none;
-  margin: 4px 2px;
   font-size: 14px;
   border-radius: 4px;
   cursor: pointer;
 }
+
 
 .operation-btns{
   text-align: center;
@@ -253,6 +281,16 @@ input[type=button], input[type=submit], .btn{
   display: none;
 }
 
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  height: 50px;
+}
 .alert {
   margin: 10px auto;
   padding: 10px;

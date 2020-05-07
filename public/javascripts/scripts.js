@@ -75,7 +75,7 @@ function formValidation(){
   if (recurrence.value == "" || recurrence.value <= 0) {
     recurrence.focus();
     document.getElementById('error').style.display = 'block';
-    error.innerHTML = "Recurrence can't be empty or less than zero"
+    error.innerHTML = "Recurrence can't be empty or less than 1"
     return false;
   }
   if (attendees.value == "") {
