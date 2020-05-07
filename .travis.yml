@@ -13,3 +13,6 @@ script:
 
 deploy:
 	provider: heroku
+	skip-cleanup: true
+	on:
+		branch: dk
