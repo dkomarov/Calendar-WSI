@@ -162,6 +162,7 @@ label #sign-one, label #sign-two{
   .footer{
     font: bold 14px sans-serif;
     width: 100% !important;
+    margin-top: 40px !important;
 	}
  
 	.footer .footer-left,
