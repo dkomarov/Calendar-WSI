@@ -12,6 +12,16 @@ const assert = require('chai').assert;
  */
 const gcalFunction = require('../lib/gcalendar');
 
+const mongoose = require('mongoose');
+
+const User = require('../models/user-model');
+
+User.findOne({
+  googleId: "100122958946797179078"
+}).then((currentUser) => {
+    User = currentUser;
+});
+
 /** Updated event data object.
  * @const {object} updatedData
  */
@@ -32,6 +42,6 @@ const updatedData =  {
  */
 describe('updateEvent()', function() {
   it('should return a successfully updated event', function(){
-    assert.isObject(gcalFunction.updateEvent(updatedData), 'object');
+    assert.isObject(gcalFunction.updateEvent(updatedData, User), 'object');
   });
 });
