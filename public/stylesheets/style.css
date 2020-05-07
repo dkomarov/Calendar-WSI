@@ -8,6 +8,13 @@ body {
   padding: 0;
 }
 
+.main-container{
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+}
+
 table {
   margin-left: auto;
   margin-right: auto;
@@ -281,16 +288,38 @@ input[type=button], input[type=submit], .btn{
   display: none;
 }
 
+
+/*-------Footer-----*/
 .footer{
-  position: fixed;
-  left: 0;
+	background-color: #292c2f;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	font: bold 16px sans-serif;
+  padding: 55px 50px;
+  margin-top: 80px;
   bottom: 0;
-  width: 100%;
-  background-color: #111;
-  color: white;
-  text-align: center;
-  height: 50px;
 }
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.footer .footer-left{
+	width: 40%;
+}
+
+.footer .footer-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
 .alert {
   margin: 10px auto;
   padding: 10px;
