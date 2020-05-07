@@ -200,7 +200,7 @@ router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.delete("/view-appointment",authCheck,(req,res)=>{
+router.delete('/view-appointment',authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 

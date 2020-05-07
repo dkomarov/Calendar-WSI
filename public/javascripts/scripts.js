@@ -106,9 +106,9 @@ async function del(eventID, eventSummary) {
  */
 function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
-    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment', 
+    $.ajax({url: 'http://localhost:3000/appointment/view-appointment', 
     data: {de:eventID},
-    type: "DELETE",
+    type: 'DELETE',
     success:function(res){
       window.location.href='/menu'
     }});
