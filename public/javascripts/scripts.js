@@ -1,3 +1,6 @@
+// establish socket connection on front-end
+var socket = io.connect('http://wsi-calendar.herokuapp.com');
+
 /** Javascript module for frontend functionality.
  * @module public/javascripts/scripts
  */
