@@ -7,12 +7,14 @@ var socket = io.connect('http://localhost:3000');
 /** Validates the appointment form before proccessing further. */
 
 window.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('form-btn').addEventListener('click', function () {
-    if (formValidation() == true) {
-      document.forms['formVal'].submit();
-    }
-  });
-});
+  if (document.getElementById('form-btn')) {
+    document.getElementById('form-btn').addEventListener('click', function () {
+      if (formValidation() == true) {
+        document.forms['formVal'].submit();
+      }
+    });
+  }
+}); 
 
 /** Form validation function to properly validate form data.
  * @function formValidation
