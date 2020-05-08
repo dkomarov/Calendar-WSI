@@ -200,7 +200,7 @@ router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.post("/view-appointment",authCheck,(req,res)=>{
+router.delete('/view-appointment/delete/:id',authCheck,(req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
   let e = req.body.de;
 
@@ -215,6 +215,10 @@ router.post("/view-appointment",authCheck,(req,res)=>{
   
   run().then(getAppointmentList(res, req));
 });
+
+router.get('/view-appointment/delete/:id',authCheck,(req,res)=>{
+  getAppointmentList(res, req);
+})
 
 /** Function to get appointment list of authenticated user.
  * @function getAppointmentList

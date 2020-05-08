@@ -97,8 +97,8 @@ function formValidation(){
 
 async function del(eventID, eventSummary) {
   await delData(eventID, eventSummary);
-  window.location = "/menu";
-  //window.location.href = "/appointment/view-appointment";
+  //window.location = '/appointment/view-appointment';
+  window.location.href = '/appointment/view-appointment';
 }
 
 /** Javascript delete function to verify deletion of event.
@@ -108,11 +108,11 @@ async function del(eventID, eventSummary) {
  */
 function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
-    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment', 
+    $.ajax({url: 'http://localhost:3000/appointment/view-appointment/delete/'+eventID, 
     data: {de:eventID},
-    type: "POST",
+    type: 'DELETE',
     success:function(res){
-      window.location.href='/menu'
+      window.location.href= '/menu'
     }});
   }
 }
