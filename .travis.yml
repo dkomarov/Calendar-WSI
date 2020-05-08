@@ -1,0 +1,23 @@
+sudo: false
+
+language: node_js
+node_js:
+- node
+cache: npm
+
+install:
+- npm install ci
+- npm install mocha
+- npm install chai
+- npm install
+
+
+script:
+- npm test
+
+deploy:
+provider: heroku
+skip-cleanup: true
+github-token: $GITHUB_TOKEN
+on:
+branch: master

@@ -1,6 +1,7 @@
- {
+{
     "source": {
       "include": ["./"],
+      "exclude": ["node_modules/"],
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(node_modules/|docs)"
     },
@@ -8,9 +9,8 @@
     "opts": {
         "encoding": "utf8",
         "readme": "./readme.md",
-        "destination": "docs/",
+        "destination": "./docs/",
         "recurse": true,
-        "verbose": true,
-        "template": "node_modules/better-docs/"
+        "verbose": true
     }
   }

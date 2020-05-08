@@ -1,5 +1,10 @@
 // establish socket connection on front-end
 var socket = io.connect('http://localhost:3000');
+/** Javascript module for frontend functionality.
+ * @module public/javascripts/scripts
+ */
+
+/** Validates the appointment form before proccessing further. */
 
 window.addEventListener('DOMContentLoaded', function () {
   document.getElementById('form-btn').addEventListener('click', function () {
@@ -9,8 +14,11 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-//validates the appointment form before proccessing further
-function formValidation() {
+/** Form validation function to properly validate form data.
+ * @function formValidation
+ * @return {boolean} true
+ */
+function formValidation(){
 
   var error = document.getElementById('error');
   var summary = document.getElementById('summary');
@@ -69,7 +77,7 @@ function formValidation() {
   if (recurrence.value == "" || recurrence.value <= 0) {
     recurrence.focus();
     document.getElementById('error').style.display = 'block';
-    error.innerHTML = "Recurrence can't be empty or less than zero"
+    error.innerHTML = "Recurrence can't be empty or less than 1"
     return false;
   }
   if (attendees.value == "") {
@@ -89,30 +97,22 @@ function formValidation() {
 
 async function del(eventID, eventSummary) {
   await delData(eventID, eventSummary);
-  //.then(window.location.href='/appointment/view-appointment');
-  window.location = "/appointment/view-appointment";
+  window.location = "/menu";
   //window.location.href = "/appointment/view-appointment";
 }
 
-function delData(eventID, eventSummary) {
-  if (confirm("Confirm do you want to delete " + eventSummary + " event?")) {
-    $.ajax({
-      url: 'http://localhost:3000/appointment/view-appointment',
-      data: { de: eventID },
-      type: "DELETE",
-      success: function (res) {
-        window.location.href='/menu'
-       // window.location.href='/appointment/view-appointment'
-      //  res.redirect('/appointment/view-appointment');
-      }
-    });
+/** Javascript delete function to verify deletion of event.
+ * @function del
+ * @param {object} eventID - Event ID
+ * @param {object} eventSummary - Summary of Event
+ */
+function delData(eventID,eventSummary){
+  if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
+    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment', 
+    data: {de:eventID},
+    type: "POST",
+    success:function(res){
+      window.location.href='/menu'
+    }});
   }
 }
-
-// function update(event) {
-//   $.ajax({url: 'http://localhost:3000/appointment/view-appointment',
-//     data: {ue:event},
-//     type: "POST",
-//     success:function(res){
-//   }}).then(() => location.reload());
-// }

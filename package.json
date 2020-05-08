@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www pm2-runtime start ecosystem.config.js --env production",
     "test": "mocha",
-    "docs": "jsdoc -c jsdoc.json"
+    "docs": "rm -rf docs/* | jsdoc -c ./jsdoc.conf.json -r ./"
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
@@ -23,15 +23,18 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "pm2": "^4.4.0",
+    "travis": "^0.1.1"
   },
   "devDependencies": {
-    "better-docs": "^1.4.7",
     "chai": "^4.2.0",
     "eslint": "^6.8.0",
     "jsdoc": "^3.6.4",
     "jsdoc-route-plugin": "^0.1.0",
-    "mocha": "^7.1.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.3.0",
+    "mocha": "^7.1.2",
+    "loadtest": "^5.0.3",
+    "yaml-lint": "^1.2.4"
   }
 }

@@ -1,21 +1,23 @@
 <title>Appointment List</title>
 
-<nav id="navID">
-  <input type="checkbox" id="nav-menu">
-  <label for="nav-menu">
-    <i class="fas fa-bars" id="sign-one"></i>
-      <i class="fas fa-times" id="sign-two"></i>
-      </label>
-    <h1><a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png"
-      alt="appt-logo"></a></h1>
-    <ul>
-      <li><a href="/appointment"><span id="create-appointment"></span>Create Appointment</a></li>
-      <li><a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a></li>
-    </ul>
-</nav>
+<body>
+  <nav id="navID">
+    <input type="checkbox" id="nav-menu">
+    <label for="nav-menu">
+      <i class="fas fa-bars" id="sign-one"></i>
+        <i class="fas fa-times" id="sign-two"></i>
+       </label>
+      <h1><a class="logo" id="logo-link" href="/menu"><img class="logo view-appointment" src="/images/logo.png"
+        alt="appt-logo"></a></h1>
+      <ul>
+        <li><a href="/appointment"><span id="create-appointment"></span>Create Appointment</a></li>
+        <li><a class="logout-btn" href="/auth/logout"><span id="logout-icon"></span>Logout</a></li>
+      </ul>
+  </nav>
 
-<section class="appointment-list">
+<section class="appointment-list" >
   <h1>Upcoming Events</h1>
+  <section style="overflow-x: auto; margin: 10px;"> 
   <table class="table-css">
     <thead>
       <tr>
@@ -33,8 +35,8 @@
       <tr>
         <td><%=count%></td>
         <td><%= eve.summary%></td>
-        <td><%= eve.start%></td>
-        <td><%= eve.end%></td>
+        <td style="text-align: left;"><b>Date:</b> <%= eve.start.substring(0, 10)%><br><b>Time:</b> <%= eve.start.substring(12, 19)%> Hrs </td>
+        <td style="text-align: left;"><b>Date:</b> <%= eve.end.substring(0, 10)%><br><b>Time:</b> <%= eve.end.substring(12, 19)%> Hrs </td>
         <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><input type="submit" class="btn"value="Edit" /></a></td>
         <td><input type="button" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete" />
         </td>
@@ -43,11 +45,11 @@
     </tbody>
   </table>
 </section>
+</section>
 
 <script rel="javascripts" src="/javascripts/scripts.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://kit.fontawesome.com/a05bed8e85.js" crossorigin="anonymous"></script>
 <script src="/javascripts/socket.io.js"></script>
