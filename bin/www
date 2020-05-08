@@ -34,17 +34,8 @@ var io = socket(server);
 
 // establish socket connection on back-end
 io.on('connection', (socket) => {
-  console.log('socket connected', socket.id)
-
-  socket.on('delete', function(data) {
-    io.sockets.emit('delete', data);
-  });
-
-  socket.on('update', function(data) {
-    io.sockets.emit('update', data);
-  });
+  console.log('socket connected', socket.id);
 });
-
 
 /**
  * Normalize a port into a number, string, or false.
