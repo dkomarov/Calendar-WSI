@@ -1,3 +1,5 @@
+// establish socket connection on front-end
+var socket = io.connect('http://localhost:3000');
 /** Javascript module for frontend functionality.
  * @module public/javascripts/scripts
  */
@@ -5,12 +7,14 @@
 /** Validates the appointment form before proccessing further. */
 
 window.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('form-btn').addEventListener('click', function () {
-    if (formValidation() == true) {
-      document.forms['formVal'].submit();
-    }
-  });
-});
+  if (document.getElementById('form-btn')) {
+    document.getElementById('form-btn').addEventListener('click', function () {
+      if (formValidation() == true) {
+        document.forms['formVal'].submit();
+      }
+    });
+  }
+}); 
 
 /** Form validation function to properly validate form data.
  * @function formValidation
@@ -95,8 +99,8 @@ function formValidation(){
 
 async function del(eventID, eventSummary) {
   await delData(eventID, eventSummary);
-  window.location = "/menu";
-  //window.location.href = "/appointment/view-appointment";
+  //window.location = '/appointment/view-appointment';
+  window.location.href = '/appointment/view-appointment';
 }
 
 /** Javascript delete function to verify deletion of event.
@@ -106,11 +110,11 @@ async function del(eventID, eventSummary) {
  */
 function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
-    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment', 
+    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment/delete/'+eventID, 
     data: {de:eventID},
-    type: "POST",
+    type: 'DELETE',
     success:function(res){
-      window.location.href='/menu'
+      window.location.href= '/menu'
     }});
   }
 }
