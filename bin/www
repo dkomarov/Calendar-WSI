@@ -7,13 +7,20 @@
 
 var app = require('../app');
 var debug = require('debug')('appointmentsystem:server');
+const env = process.env.NODE_ENV ? process.env.NODE_ENV : "development" || "production";
 var socket = require('socket.io')
+require('dotenv').config()
+
+const port = process.env.PORT;
+const host = process.env.HOST;
+const live = process.env.LIVE;
+
 
 /**
  * get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+// var port = normalizePort(process.env.PORT || '3000');
 
 app.set('port', port);
 
@@ -24,7 +31,11 @@ var io = socket(server);
  */
 //var server = http.createServer(app);
 var server = app.listen(port, function(){
-  console.log('\nServer is running. To connect, go to: http://localhost:3000\n');
+  if (env != 'production') {
+  console.log(`\nServer is running in ${env}. To connect, go to: http://${host}\n`);
+  } else {
+    console.log(`\nServer is running in ${env}. To connect, go to: http://${live}\n`);
+  }
 })
 
 server.on('error', onError);
@@ -33,9 +44,9 @@ server.on('listening', onListening);
 var io = socket(server);
 
 // establish socket connection on back-end
-io.on('connection', (socket) => {
-  console.log('socket connected', socket.id);
-});
+// io.on('connection', (socket) => {
+//   console.log('socket connected', socket.id);
+// });
 
 /**
  * Normalize a port into a number, string, or false.
@@ -96,5 +107,3 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-
-module.exports = io;
