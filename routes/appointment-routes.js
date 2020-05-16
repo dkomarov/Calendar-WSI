@@ -250,7 +250,7 @@ function getAppointmentInfo(res, req, success){
         if(err){
           console.log("Unable to find event id.");
         } else {
-          console.log("Event id found: " + event);
+          console.log("Event found", event);
 
           if (success == 0) {
             res.render('update', { user: req.user, "event": event, success: '' })
