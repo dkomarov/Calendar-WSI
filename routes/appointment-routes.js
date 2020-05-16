@@ -216,10 +216,6 @@ router.delete('/view-appointment',authCheck,(req,res)=>{
   run().then(getAppointmentList(res, req));
 });
 
-router.get('/view-appointment/delete/:id',authCheck,(req,res)=>{
-  getAppointmentList(res, req);
-})
-
 /** Function to get appointment list of authenticated user.
  * @function getAppointmentList
  * @param {object} res - Response

@@ -1,11 +1,9 @@
-// establish socket connection on front-end
-var socket = io.connect(`http://localhost:3000`);
-
-
-
 /** Javascript module for frontend functionality.
  * @module public/javascripts/scripts
  */
+
+// establish socket connection on front-end
+// var socket = io.connect('http://localhost:3000');
 
 /** Validates the appointment form before proccessing further. */
 
@@ -100,24 +98,18 @@ function formValidation(){
   return true;
 }
 
-async function del(eventID, eventSummary) {
-  await delData(eventID, eventSummary);
-  //window.location = '/appointment/view-appointment';
-  window.location.href = '/menu';
-}
-
 /** Javascript delete function to verify deletion of event.
  * @function del
  * @param {object} eventID - Event ID
  * @param {object} eventSummary - Summary of Event
  */
-function delData(eventID,eventSummary){
+function del(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
     $.ajax({url: `http://localhost:3000/appointment/view-appointment`,
     data: {de:eventID},
     type: 'DELETE',
     success:function(res){
-      window.location.href= '/menu'
+      window.location.href = '/menu';
     }});
   }
 }
