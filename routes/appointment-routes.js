@@ -116,7 +116,11 @@ router.post('/', function (req, res) {
     'location': rb.location,
     'description': rb.description,
     'start': startDateObj,
+    'startDate': rb.startDate,
+    'startTime': rb.startTime,
     'end': endDateObj,
+    'endDate': rb.endDate,
+    'endTime': rb.endTime,
     'recurrence': rb.recurrence,
     'attendees': rb.attendees,
     'reminders': rb.reminders
@@ -212,7 +216,7 @@ router.delete('/view-appointment',authCheck,(req,res)=>{
     gcalFunction.deleteEvent(e);
     gcalFunction.listEvent(req.user);
   }
-  
+
   run().then(getAppointmentList(res, req));
 });
 
