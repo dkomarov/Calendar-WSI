@@ -1,5 +1,7 @@
 // establish socket connection on front-end
-var socket = io.connect('http://wsi-calendar.herokuapp.com');
+var socket = io.connect(`http://localhost:3000`);
+
+
 
 /** Javascript module for frontend functionality.
  * @module public/javascripts/scripts
@@ -15,7 +17,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-}); 
+});
 
 /** Form validation function to properly validate form data.
  * @function formValidation
@@ -111,7 +113,7 @@ async function del(eventID, eventSummary) {
  */
 function delData(eventID,eventSummary){
   if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
-    $.ajax({url: 'http://wsi-calendar.herokuapp.com/appointment/view-appointment', 
+    $.ajax({url: `http://localhost:3000/appointment/view-appointment`,
     data: {de:eventID},
     type: 'DELETE',
     success:function(res){
