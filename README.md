@@ -1,7 +1,6 @@
-# project-4-release
-Release Phase for semester project 567.
+IIT Spring 2020 project, ITMD 567.
 
-## WSI-Calendar
+## Calendar-WSI
 
 A custom gateway interface to create, read, update, and delete events from Google Calendar. An alternative solution, notifier, interface, and backup for all your events.
 
@@ -9,3 +8,4 @@ A custom gateway interface to create, read, update, and delete events from Googl
 
 **Live URL:**
 http://wsi-calendar.herokuapp.com
+
