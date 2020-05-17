@@ -24,7 +24,7 @@
   <% event.forEach(function (eve) { %>
   <%count++%>
   
-  <form method="post" action="/appointment/view-appointment/update/<%= eve._id%>" id="formVal">
+  <form method="post" action="/appointment/view-appointment/update/<%= eve._id%>/<%= eve.event_id %>" id="formVal">
     <h3>Update Appointment <%= eve.summary %></h3>
     <table id="form">
       <tr>
