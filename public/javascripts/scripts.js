@@ -97,19 +97,3 @@ function formValidation(){
   }
   return true;
 }
-
-/** Javascript delete function to verify deletion of event.
- * @function del
- * @param {object} eventID - Event ID
- * @param {object} eventSummary - Summary of Event
- */
-function del(eventID,eventSummary){
-  if(confirm("Confirm do you want to delete "+ eventSummary +" event?")){
-    $.ajax({url: `http://localhost:3000/appointment/view-appointment`,
-    data: {de:eventID},
-    type: 'DELETE',
-    success:function(res){
-      window.location.href = '/menu';
-    }});
-  }
-}

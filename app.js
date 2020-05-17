@@ -77,6 +77,11 @@ const passport = require('passport');
  */
 const passportSetup = require('./config/passport-setup');
 
+/** Require module for method override. To convert Post requests to Delete and Update.
+ * @requires method-override
+ */
+const methodOverride = require('method-override')
+
 /** Require module for path.
  * @requires path
  */
@@ -105,6 +110,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
+app.use(methodOverride('_method'))
 
 /** Manage cookie sessions. */
 app.use(cookieSession({

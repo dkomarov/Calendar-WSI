@@ -19,15 +19,17 @@ const mongoose = require('mongoose');
  * @param {string} start - Appointment start date&time
  * @param {string} end - Appointment end date&time
  */
-const eventSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
-  event_id: { type: String, require: true },
-  userID: { type: String, require: true },
+const eventSchema = new mongoose.Schema({
+  event_id: { type: String, required: true },
+  userID: { type: String, required: true },
   summary: { type: String, required: false },
   location: { type: String, required: false },
   description: { type: String, required: false },
   start: { type: String, required: false },
-  end: { type: String, required: false }
+  end: { type: String, required: false },
+  recurrence: { type: String, required: false },
+  attendees: { type: String, required: false },
+  reminders: { type: String, required: false }
 });
 
 /** Inserting authorized event data to event collection schema. */

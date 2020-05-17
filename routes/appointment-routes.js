@@ -88,7 +88,7 @@ router.get('/view-appointment', authCheck, (req, res) => {
   getAppointmentList(res, req);
 });
 
-router.get('/view-appointment/update/:id', authCheck, (req, res) => {
+router.get('/view-appointment/update/:id/:id2', authCheck, (req, res) => {
   console.log('Passed ID: ' + req.params.id);
   getAppointmentInfo(res, req, success);
 });
@@ -116,7 +116,11 @@ router.post('/', function (req, res) {
     'location': rb.location,
     'description': rb.description,
     'start': startDateObj,
+    'startDate': rb.startDate,
+    'startTime': rb.startTime,
     'end': endDateObj,
+    'endDate': rb.endDate,
+    'endTime': rb.endTime,
     'recurrence': rb.recurrence,
     'attendees': rb.attendees,
     'reminders': rb.reminders
@@ -152,9 +156,11 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
+router.post("/view-appointment/update/:id/:id2", authCheck, (req, res)=>{
   let rb = req.body;
 
+  let mongoid = req.params.id
+  let gcalid = req.params.id2
   startDateObj = new Date(rb.startTime + " " + rb.startDate).toISOString();
   endDateObj = new Date(rb.endTime + " " + rb.endDate).toISOString();
 
@@ -162,8 +168,8 @@ router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
   console.log("endDateObj is: " + endDateObj);
 
   newData = {
-    'mongoID': rb.mongoID,
-    'eventID': rb.eventID,
+    'mongoID': mongoid,
+    'eventID': gcalid,
     'summary': rb.summary,
     'location': rb.location,
     'description': rb.description,
@@ -200,20 +206,35 @@ router.post("/view-appointment/update/:id", authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.delete('/view-appointment',authCheck,(req,res)=>{
+router.delete('/view-appointment/delete/:id/:id2',authCheck, async (req,res)=>{
   console.log("req.body in DELETE is: %j" ,req.body)
-  let e = req.body.de;
+  let mongoid = req.params.id
+  let gcalid = req.params.id2
+  // let g = req.body.gcalID;
+  // let m = req.body.mdbID;
+  // let de = req.body.de;
 
+  let event
+  try {
+    await gcalFunction.deleteEvent(gcalid);
+    gcalFunction.listEvent(req.user);
+    event = await Event.findById(mongoid)
+    await event.remove()
+    getAppointmentList(res, req);
+  } catch (err) {
+    console.log(err)
+    res.redirect('/menu')
+  }
   /** Function to run gCal functions asynchronously
    * @async
    * @function run
    */
-  async function run(){
-    gcalFunction.deleteEvent(e);
-    gcalFunction.listEvent(req.user);
-  }
-  
-  run().then(getAppointmentList(res, req));
+  // async function run(){
+  //   gcalFunction.deleteEvent(e);
+  //   gcalFunction.listEvent(req.user);
+  // }
+
+  // run().then(getAppointmentList(res, req));
 });
 
 /** Function to get appointment list of authenticated user.

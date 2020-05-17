@@ -36,9 +36,9 @@
         <td><%= eve.summary%></td>
         <td style="text-align: left;"><b>Date:</b> <%= eve.start.substring(0, 10)%><br><b>Time:</b> <%= eve.start.substring(12, 19)%> Hrs </td>
         <td style="text-align: left;"><b>Date:</b> <%= eve.end.substring(0, 10)%><br><b>Time:</b> <%= eve.end.substring(12, 19)%> Hrs </td>
-        <td><a href="/appointment/view-appointment/update/<%= eve._id%>"><input type="submit" class="btn"value="Edit" /></a></td>
-        <td><input type="button" class="btn" onclick="del('<%= eve.event_id%>','<%= eve.summary%>')" value="Delete" />
-        </td>
+        <td><a href='/appointment/view-appointment/update/<%= eve._id %>/<%= eve.event_id %>'><input type="button" class="btn"value="Edit" /></a></td>
+        <td><%- include('partials/deleteForm', { url: `/appointment/view-appointment/delete/${eve._id}/${eve.event_id}` }) %></td>
+      </td>
       </tr>
       <% }) %>
     </tbody>
@@ -49,6 +49,5 @@
 <script src="https://kit.fontawesome.com/a05bed8e85.js" crossorigin="anonymous"></script>
 <script src="https://apis.google.com/js/api.js"></script>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script rel="javascripts" src="/javascripts/socket.io.js"></script>
 <script rel="javascripts" src="/javascripts/scripts.js"></script>
