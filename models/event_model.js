@@ -19,8 +19,7 @@ const mongoose = require('mongoose');
  * @param {string} start - Appointment start date&time
  * @param {string} end - Appointment end date&time
  */
-const eventSchema = mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
+const eventSchema = new mongoose.Schema({
   event_id: { type: String, required: true },
   userID: { type: String, required: true },
   summary: { type: String, required: false },

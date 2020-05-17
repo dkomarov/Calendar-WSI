@@ -27,14 +27,6 @@
   <form method="post" action="/appointment/view-appointment/update/<%= eve._id%>" id="formVal">
     <h3>Update Appointment <%= eve.summary %></h3>
     <table id="form">
-      <tr id="mongoID">
-        <td>mongoid:</td>
-        <td><input type="text" id="mongoID" name="mongoID" value="<%= eve._id %>"></td>
-      </tr>
-      <tr id="eventID">
-        <td>id:</td>
-        <td><input type="text" id="eventID" name="eventID" value="<%= eve.event_id %>"></td>
-      </tr>
       <tr>
         <td><input type="text" id="summary" name="summary" value="<%= eve.summary %>"></td>
       </tr>
