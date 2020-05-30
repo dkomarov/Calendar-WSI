@@ -2,8 +2,8 @@
 
 module.exports = {
   google: {
-    clientID: '1012259665491-h9mjitf64jabj5b5fm03umu5c6a84t9o.apps.googleusercontent.com',
-    clientSecret: 'bZtqSBXzK7MtfNHrSOXya8Us'
+    clientID: '516588600965-rgvoabv84qgcq2pf9ve2q43jon0fo7jf.apps.googleusercontent.com',
+    clientSecret: 'cFSMwNctLQCsmIprXDb8t3MP'
   },
   session: {
     cookieKey: 'websystemjustdoitgroup'
