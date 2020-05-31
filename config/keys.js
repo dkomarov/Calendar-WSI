@@ -1,11 +1,12 @@
 'use strict';
+require('dotenv').config()
 
 module.exports = {
   google: {
-    clientID: '516588600965-rgvoabv84qgcq2pf9ve2q43jon0fo7jf.apps.googleusercontent.com',
-    clientSecret: 'cFSMwNctLQCsmIprXDb8t3MP'
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.SECRET
   },
   session: {
-    cookieKey: 'websystemjustdoitgroup'
+    cookieKey: process.env.COOKIE
   }
 };
