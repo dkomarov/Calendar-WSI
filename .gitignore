@@ -1,4 +1,7 @@
 node_modules
 token.json
 package-lock.json
+config/keys.js
+credentials.json
+.DS_Store
 .env
