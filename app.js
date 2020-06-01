@@ -145,14 +145,14 @@ app.use('/appointment/view-appointment', appointmentRoutes);
 // });
 
 /** Error handler */
-app.use(function(err, req, res) {
-  /** Set locals, only providing error in development. */
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// app.use(function(err, req, res) {
+//   /** Set locals, only providing error in development. */
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  /** Render the error page */
-  res.status(err.status || 500);
-  res.render('error');
-});
+//   /** Render the error page */
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
 
 module.exports = app;
