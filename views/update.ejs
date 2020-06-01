@@ -37,19 +37,19 @@
         <td><input type="text" id="description" name="description" value="<%= eve.description %>"></td>
       </tr>
       <tr>
-        <td><input type="text" id="startDate" name="startDate" value="<%= eve.start == null ? '': eve.start.split('T')[0]%>" placeholder="Start Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
+        <td><input type="text" id="startDate" name="startDate" value="<%= eve.start == null ? '': new Date(eve.start).toLocaleString('en-US').substring(0,9) %>" placeholder="Start Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
       </tr>
       <tr>
-        <td><input type="text" id="startTime" name="startTime" value="<%= eve.start == null ? '': eve.start.split('-')[3]%>" placeholder="Start Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
+        <td><input type="text" id="startTime" name="startTime" value="<%= eve.start == null ? '': new Date(eve.start).toLocaleString('en-US').substring(10, 22) %>" placeholder="Start Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
       </tr>
       <tr>
-        <td><input type="text" id="endDate" name="endDate" value="<%= eve.end == null ? '': eve.end.split('T')[0]%>" placeholder="End Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
+        <td><input type="text" id="endDate" name="endDate" value="<%= eve.end == null ? '': new Date(eve.end).toLocaleString('en-US').substring(0,9) %>" placeholder="End Date: MM/DD/YYYY" onfocus="(this.type='date')" onblur="(this.type='text')"></td>
       </tr>
       <tr>
-        <td><input type="text" id="endTime" name="endTime" value="<%= eve.end == null ? '': eve.end.split('-')[3]%>" placeholder="End Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
+        <td><input type="text" id="endTime" name="endTime" value="<%= eve.end == null ? '': new Date(eve.end).toLocaleString('en-US').substring(10, 22) %>" placeholder="End Time: HH:MM AM/PM" onfocus="(this.type='time')" onblur="(this.type='text')"></td>
       </tr>
       <tr>
-        <td><input type="number" id="recurrence" name="recurrence" value="<%= eve.recurrence %>" placeholder="Recurrence: (#)"></td>
+        <td><input type="number" id="recurrence" name="recurrence" value="<%= eve.recurrence %>" placeholder="Recurrence (#):"></td>
       </tr>
       <tr>
         <td><input type="email" id="attendees" name="attendees"  value="<%= eve.attendees %>" multiple placeholder="Attendee Email(s): xyz@gmail.com, abc@gmail.com"></td>
