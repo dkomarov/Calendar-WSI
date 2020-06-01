@@ -17,7 +17,11 @@ const mongoose = require('mongoose');
  * @param {string} description - Appointment description
  * @param {string} start - Appointment start date&time
  * @param {string} end - Appointment end date&time
+ * @param {string} recurrence - Appointment recurrence
+ * @param {string} attendees - Appointment attendee email address
+ * @param {string} reminders - Appointment reminder notes
  */
+
 const eventSchema = new mongoose.Schema({
   event_id: { type: String, required: true },
   userID: { type: String, required: true },
