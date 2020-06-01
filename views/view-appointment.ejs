@@ -34,8 +34,8 @@
       <tr>
         <td><%=count%></td>
         <td><%= eve.summary%></td>
-        <td style="text-align: left;"><b>Date:</b> <%= new Date(eve.start).toLocaleString('en-US').substring(0,9) %><br><b>Time:</b> <%= new Date(eve.start).toLocaleString('en-US').substring(11, 22) %> </td>
-        <td style="text-align: left;"><b>Date:</b> <%= new Date(eve.end).toLocaleString('en-US').substring(0,9) %><br><b>Time:</b> <%= new Date(eve.end).toLocaleString('en-US').substring(11, 22) %> </td>
+        <td style="text-align: left;"><b>Date:</b> <%= new Date(eve.start).toLocaleString('en-US').substring(0,9) %><br><b>Time:</b> <%= new Date(eve.start).toLocaleString('en-US').substring(10, 22) %> </td>
+        <td style="text-align: left;"><b>Date:</b> <%= new Date(eve.end).toLocaleString('en-US').substring(0,9) %><br><b>Time:</b> <%= new Date(eve.end).toLocaleString('en-US').substring(10, 22) %> </td>
         <td><a href='/appointment/view-appointment/update/<%= eve._id %>/<%= eve.event_id %>'><input type="button" class="btn"value="Edit" /></a></td>
         <td><%- include('partials/deleteForm', { url: `/appointment/view-appointment/delete/${eve._id}/${eve.event_id}` }) %></td>
       </td>
