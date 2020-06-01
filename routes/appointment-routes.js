@@ -146,7 +146,7 @@ router.post('/', function (req, res) {
  * @name get/view-appointment/update/id
  * @param {object} req.params.id - User Event ID
  */
-router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
+router.get('/view-appointment/update/:id', authCheck, (req, res) => {
   console.log('Passed ID: '+req.params.id);
   getAppointmentInfo(res, req);
 });
@@ -156,7 +156,7 @@ router.get('/view-appointment/update/:id', authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.post("/view-appointment/update/:id/:id2", authCheck, (req, res)=>{
+router.post("/view-appointment/update/:id/:id2", authCheck, async (req, res) => { 
   let rb = req.body;
 
   let mongoid = req.params.id
@@ -175,6 +175,7 @@ router.post("/view-appointment/update/:id/:id2", authCheck, (req, res)=>{
     'description': rb.description,
     'start': startDateObj,
     'end': endDateObj,
+    'recurrence': rb.recurrence,
     'attendees': rb.attendees,
     'reminders': rb.reminders
   }
@@ -206,7 +207,7 @@ router.post("/view-appointment/update/:id/:id2", authCheck, (req, res)=>{
  * @param {object} req - Call back request
  * @param {object} res - Call back response
  */
-router.delete('/view-appointment/delete/:id/:id2',authCheck, async (req,res)=>{
+router.delete('/view-appointment/delete/:id/:id2',authCheck, async (req,res) => {
   console.log("req.body in DELETE is: %j" ,req.body)
   let mongoid = req.params.id
   let gcalid = req.params.id2
@@ -242,7 +243,7 @@ router.delete('/view-appointment/delete/:id/:id2',authCheck, async (req,res)=>{
  * @param {object} res - Response
  * @param {object} req - Request
  */  
-function getAppointmentList(res,req){
+function getAppointmentList(res,req) {
   Event.find({userID: req.user.googleId}).exec(function(err, events) {   
     if (err) {
       throw err;
