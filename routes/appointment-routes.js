@@ -182,15 +182,29 @@ router.post("/view-appointment/update/:id/:id2", authCheck, async (req, res) => 
 
   console.log("inside put route, newData is: %j", newData)
 
-
-  async function run() {
+  let event
+  try {
     await gcalFunction.updateEvent(newData)
     gcalFunction.listEvent(req.user);
+    event = await Event.findById(mongoid)
+    await event.updateOne(newData)
+    success = 1
+    getAppointmentInfo(res, req, success);
+    success = 0
+  } catch (err) {
+    console.log(err)
+    res.redirect('/menu')
   }
 
-  success = 1;
-  run().then(getAppointmentInfo(res, req, success))
-  success = 0;
+  // async function run() {
+  //   await gcalFunction.updateEvent(newData)
+  //   gcalFunction.listEvent(req.user);
+  // }
+
+  // success = 1;
+  // run().then(getAppointmentInfo(res, req, success))
+  // success = 0;
+
   //run().then(res.render('update', { user: req.user, "event": event, success: "Update successful!"}));
   
   //getAppointmentList(res, req);
