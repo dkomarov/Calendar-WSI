@@ -462,7 +462,7 @@ input[type=button], input[type=submit], .btn{
   -webkit-animation-delay: 1s;
   animation: seconds 1.0s forwards;
   animation-iteration-count: 1;
-  animation-delay: 1s;
+  animation-delay: 2s;
 }
 
 .red-alert {
