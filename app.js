@@ -140,9 +140,9 @@ app.use('/appointment/appt-success', appointmentRoutes);
 app.use('/appointment/view-appointment', appointmentRoutes);
 
 /** Catch 404 error and forward to error handler. */
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+//   next(createError(404));
+// });
 
 /** Error handler */
 app.use(function(err, req, res) {

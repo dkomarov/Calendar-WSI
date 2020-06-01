@@ -59,7 +59,7 @@ passport.use(
         }).then((currentUser) => {
             if(currentUser){
                 /** User exists. */
-                User.update({googleId: profile.id},{googleToken : accessToken},function(err, obj) {
+                User.updateOne({googleId: profile.id},{googleToken : accessToken},function(err, obj) {
                     if (err){
                       throw err;
                     }else{
